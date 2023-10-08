@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+        <!--icon-->
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <script src="https://kit.fontawesome.com/82022f6720.js" crossorigin="anonymous"></script>
+        <!-- link Css-->
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!--Css-->
+        <link rel="stylesheet" th:href="@{/kimcuong.css}">
+        <title>Trang Sức Xavia</title>
+        <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </head>
+<body>
+    <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+        <header>
+            <!--Thanh Liên Hệ-->
+              <div class="container-fluid header_lienhe">
+                  <div class="row" >
+                      <div class="col">
+                          <div class="leftmap">
+                              <a class="map" href="" style="margin-left: 10%;"><i class="ion-ios-location-outline"></i>  Hệ Thống Cửa Hàng</a>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <div class="rightuser" style="margin-right: 15%;">
+                               <ul style="display: flex; justify-content: right; color: white;">
+                                  <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                                  <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                               </ul>                       
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <!--Thanh LOGO-->
+              <div class="container-fluid bg-black" style="border-bottom: 1px solid rgb(106, 106, 106);">
+                  <div class="row">
+                      <div class="col-3">
+                          <div class="search"> 
+                              <input type="text" class="form-control" placeholder="Tìm Kiếm"> 
+                              <i class="ion-ios-search-strong"></i> 
+                          </div>
+                      </div>
+                      <div class="col-5">
+                          <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 180px;margin-bottom: 15px ;">
+                      </div>
+                      <div class="col-4">
+                          <div class="logo_right" style="display: flex; justify-content: center; margin-top: 20px;">
+                              <div class="tuvan" style="display: flex; margin-right: 10px;">
+                                  <div class="iconcall">
+                                      <i class="ion-android-call" style="color: white;font-size: 30px; margin-top: 20px;"></i>
+                                  </div>
+                                  <div class="content-tuvan" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                      <p>Hỗ trợ & tư vấn</p>
+                                      <p>1900 2211</p>
+                                  </div>
+                              </div>
+                              <div class="icon-cart" style="display: flex;">
+                                  <div class="iconcall">
+                                      <a href=""><i class="ion-bag" style="color: white;font-size: 30px; margin-top: 20px;"></i></a>
+                                  </div>
+                                  <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                      <a href="/page/cart/cart.html" style="color: white;"><p>Giỏ hàng</p>
+                                      <p style="color:#ff9bf7;">(0) Sản Phẩm</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!--Thanh Memu (nav)-->
+            <nav class="navbar navbar-expand-sm" style="background-color: #1b1b1b; border-bottom: 1px solid rgb(85, 85, 85)">
+                <div class="container-fluid" style="display: flex; justify-content: center;">
+                  <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                      <a class="nav-link " href="/index.html"><i class="fa-solid fa-house-chimney"></i> Trang Chủ</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link " href="/page/Gioithieu/gioithieu.html">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown"> 
+                            <a class="nav-link" href="/page/products/products.html">Sản Phẩm <i class="ion-chevron-down"></i> </a>
+                            <div class="dropdown-content"> 
+                                <a href="/page/product_main/kimcuong/kimcuong.html">Trang Sức Kim Cương</a> 
+                                <a href="/page/product_main/trantinh/trantinh.html">Trần Tình</a> 
+                                <a href="/page/product_main/vinhcuu/vinhcuu.html">Vĩnh Cửu</a> 
+                                <a href="/page/product_main/tamsinh/tamsinh.html">Tam Sinh</a>
+                            </div>
+                        </div>    
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown"> 
+                            <a class="nav-link" href="/page/gift/MomDay/Momday.html">Quà Tặng <i class="ion-chevron-down"></i>   </a>
+                            <div class="dropdown-content"> 
+                                <a href="/page/gift/MomDay/Momday.html">Ngày của mẹ</a>
+                                <a href="/page/gift/wedding/wedding.html">Kỉ niệm ngày cưới</a> 
+                                <a href="/page/gift/MomDay/Momday.html">Ngày Sinh Nhật</a> 
+                                <a href="/page/gift/wedding/wedding.html">Valentine's Day</a> 
+                                <a href="/page/gift/MomDay/Momday.html">Tốt Nghiệp</a>  
+                            </div>
+                        </div>       
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="/page/comment/comment.html">Đánh Giá</a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link " href="/page/blog/blog.html">Blog</a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link " href="/page/contact_us/lienhe.html">Liên Hệ</a>
+                      </li>
+                  </ul>
+                </div>
+            </nav>
+    </header>
+   
+    <!--Banner-->
+        <div class="banner">
+        <img src="/image/kimcuong/banner_kc.jpg" alt="" style="max-height: 500px;">
+        </div>
+    <!--main-->
+        <div class="container-fluid">
+            <!--Filter-->
+            <div class="container" style="margin-top: 30px; margin-bottom: 30px;border-bottom: 2px solid rgb(75, 74, 74) ;">
+                <div class="filter">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="my-select">Chất Liệu: </label>
+                                <select id="my-select" class="custom-select" name="">
+                                    <option>Vàng</option>
+                                    <option>Bạc</option>
+                                    <option>Bạch Kim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="my-select">Đính: </label>
+                                <select id="my-select" class="custom-select" name="">
+                                    <option>Kim Cương</option>
+                                    <option>Đá CZ</option>
+                                    <option>Đá Ruby/Sapphire</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="my-select">Giá : </label>
+                                <select id="my-select" class="custom-select" name="">
+                                    <option>~5.000.000đ</option>
+                                    <option>~10.000.000đ</option>
+                                    <option>~15.000.000đ</option>
+                                    <option>~20.000.000đ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <p style="text-align:end;color: white;">200 sản phẩm</p>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Product 1-->
+            <div class="container d-flex justify-content-center mt-100">
+                <div class="row">
+                    <div class="col-3 col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh1.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">18.000.000đ</span>
+                                    <span class="price">20.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh15.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trơn 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">14.000.000đ</span>
+                                    <span class="price">16.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh20.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">24.000.000đ</span>
+                                    <span class="price">26.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh4.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 24K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">34.000.000đ</span>
+                                    <span class="price">34.500.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Product 2-->
+            <div class="container d-flex justify-content-center mt-100">
+                <div class="row">
+                    <div class="col-3 col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh10.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Hoa Tai Kim cương trắng 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">15.000.000đ</span>
+                                    <span class="price">16.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh6.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">14.500.000đ</span>
+                                    <span class="price">16.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh7.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Vòng Tay Kim cương 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">24.090.000đ</span>
+                                    <span class="price">26.800.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh8.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Vòng Tay Kim cương Đá CZ </p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">34.900.000đ</span>
+                                    <span class="price">36.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Product 3-->
+            <div class="container d-flex justify-content-center mt-100">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="/image/kimcuong/banner_sp.jpg" alt="" style="height: 550px;">
+                    </div>
+                    <div class="col-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh9.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Dây Chuyền Kim cương 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">14.080.000đ</span>
+                                    <span class="price">16.090.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh13.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product"> Nhẫn Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">14.990.000đ</span>
+                                    <span class="price">16.200.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh5.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Dây Chuyền Kim cương 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">25.000.000đ</span>
+                                    <span class="price">26.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh12.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Dây Chuyền Kim cương 24K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">34.800.000đ</span>
+                                    <span class="price">36.600.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>         
+                </div>
+            </div>
+
+            <!--Product row 4-->
+            <div class="container d-flex justify-content-center" style="margin-top: 20px;">
+                <div class="row">
+                    <div class="col-3 col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh11.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">8.000.000đ</span>
+                                    <span class="price">16.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh14.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Dây Chuyền Kim cương 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">24.900.000đ</span>
+                                    <span class="price">26.060.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh2.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Hoa Tai Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">22.000.000đ</span>
+                                    <span class="price">26.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh16.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Lắc Kim cương trắng 24K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">35.500.000đ</span>
+                                    <span class="price">36.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Product 5-->
+            <div class="container d-flex justify-content-center mt-100">
+                <div class="row">
+                    <div class="col-3 col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh17.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">15.000.000đ</span>
+                                    <span class="price">16.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh18.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">12.700.000đ</span>
+                                    <span class="price">16.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh19.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Hoa Tai Kim cương trắng 14K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">17.000.000đ</span>
+                                    <span class="price">20.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh3.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Dây Chuyền Kim cương 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">23.000.000đ</span>
+                                    <span class="price">26.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Product 6-->
+            <div class="container d-flex justify-content-center mt-100">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh21.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">22.000.000đ</span>
+                                    <span class="price">26.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh22.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Dây Chuyền Kim cương 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">17.000.000đ</span>
+                                    <span class="price">22.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh23.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">8.800.000đ</span>
+                                    <span class="price">9.900.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh24.png" alt=""> </a>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="detail-product">
+                                <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                                <p class="price-product d-flex">
+                                    <span class="price-sale">16.000.000đ</span>
+                                    <span class="price">18.000.000đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <img class="banner_sp" src="/image/kimcuong/banner_sp2.jpg" alt="" style="height: 550px;margin-top: 10px ;">
+                    </div>         
+                </div>
+            </div>
+            
+        <!--Product 7-->
+        <div class="container d-flex justify-content-center mt-100">
+            <div class="row">
+                <div class="col-3 col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh17.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">15.000.000đ</span>
+                                <span class="price">16.000.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh18.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Nhẫn Kim cương trắng 18K</p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">12.700.000đ</span>
+                                <span class="price">16.000.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh19.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Hoa Tai Kim cương trắng 14K</p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">17.000.000đ</span>
+                                <span class="price">20.000.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh3.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Hoa Tai Kim cương trắng 18K</p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">13.000.000đ</span>
+                                <span class="price">16.000.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Product 8-->
+        <div class="container d-flex justify-content-center mt-100">
+            <div class="row">
+                <div class="col-3 col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh10.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Hoa Tai Kim cương trắng 14K</p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">15.000.000đ</span>
+                                <span class="price">16.000.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh6.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Nhẫn Kim cương trắng 14K</p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">14.500.000đ</span>
+                                <span class="price">16.000.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh7.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Vòng Tay Kim cương 14K</p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">24.090.000đ</span>
+                                <span class="price">26.800.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-wrapper mb-45 text-center">
+                        <div class="product-img"> <a href="#" data-abc="true"> <img src="/image/kimcuong/anh8.png" alt=""> </a>
+                            <div class="product-action">
+                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                            </div>
+                        </div>
+                        <div class="detail-product">
+                            <p class="name-product">Vòng Tay Kim cương Đá CZ </p>
+                            <p class="price-product d-flex">
+                                <span class="price-sale">34.900.000đ</span>
+                                <span class="price">36.000.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ReadMore">
+            <p style="text-align:center;color: white;">Hiển thị 24/200</p>
+            <button class="btn btn-readmore mx-auto d-block" type="button">Xem Thêm Sản Phẩm</button>
+        </div>
+    </div>
+    
+    
+ <!--Footer-->
+ <footer>
+    <div class="container-fluid" style="background-color: rgb(0, 0, 0);">    
+        <div class="container container-phuongcham" style="margin-bottom: 50px;">
+            <div class="container" style="margin:60px 0 20px 0 ;">
+                <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 200px;">
+            </div>
+            <div class="container" style="text-align: center; line-height: 10px; color: white;">
+                <p>You say, We'll do it -- Bạn yêu cầu, chúng tôi làm</p>
+                <p>We are here to serve you -- Chúng tôi ở đây để phục vụ bạn</p>
+                <p>Your Passion is our Satisfaction -- Đam mê của bạn là sự hài lòng của chúng tôi</p>         
+            </div>
+        </div>
+        <div class="container-fulid container-fluid-footer">
+            <div class="row">
+                <div class="col" style="margin-left: 30px;">
+                    <ul class="content-footer">
+                        <li class="title-content-footer">Hệ Thống Cửa Hàng</li>
+                        <li class="content-footer-1">> Tiền Giang</li>
+                        <li class="content-footer-1">> Bến Tre</li>
+                        <li class="content-footer-1">> Thân Cửu Nghĩa</li>
+                        </ul>
+                </div>
+                <div class="col">
+                    <ul class="content-footer">
+                        <li class="title-content-footer">Thông Tin Liên Hệ</li>
+                        <li class="content-footer-1">> Hotline: 0819385256</li>
+                        <li class="content-footer-1">> Email: Xavia@gmail.com</li>
+                        <li class="content-footer-1">> Địa chỉ: Tiền Giang</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="content-footer">
+                        <li class="title-content-footer">Liên Kết Nhanh</li>
+                        <a href="/index.html"><li>> Trang chủ</li></a> 
+                        <a href="/page/products/products.html"><li>> Sản phẩm</li></a> 
+                        <a href="/page/blog/blog.html"><li>> Blog</li></a> 
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="content-footer-last" style="list-style-type: none;">
+                        <li class="title-content-footer">Chủ đề nổi bật</li>
+                        <a href="/page/product_main/trantinh/trantinh.html"><li>> Trần Tình  </li></a>
+                        <a href="/page/product_main/vinhcuu/vinhcuu.html"><li>> Vĩnh Cửu </li></a>
+                        <a href="/page/product_main/tamsinh/tamsinh.html"><li>> Tam Sinh </li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>       
+        <div class="container-fluid container-fulid-payment">
+            <div class="payment" style="display: flex; justify-content: center;">
+            <div class="icon-payment"><img src="/image/payment/geotrust.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/Visa.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/mastercard.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/momo.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/jcb.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/diners.png" alt=""></div>
+            </div>
+        </div>
+    </div>       
+</footer>
+
+
+</div>
+</body>
+</html>

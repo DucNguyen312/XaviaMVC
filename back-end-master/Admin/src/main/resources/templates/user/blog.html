@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!--icon-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- link Css-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--Css-->
+    <link rel="stylesheet" th:href="@{/blog.css}">
+    <title>Trang Sức Xavia</title>
+    <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
+</head>
+<body>
+    <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+        <header>
+            <!--Thanh Liên Hệ-->
+              <div class="container-fluid header_lienhe">
+                  <div class="row" >
+                      <div class="col">
+                          <div class="leftmap">
+                              <a class="map" href="" style="margin-left: 10%;"><i class="ion-ios-location-outline"></i>  Hệ Thống Cửa Hàng</a>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <div class="rightuser" style="margin-right: 15%;">
+                               <ul style="display: flex; justify-content: right; color: white;">
+                                  <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                                  <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                               </ul>                       
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <!--Thanh LOGO-->
+              <div class="container-fluid bg-black" style="border-bottom: 1px solid rgb(106, 106, 106);">
+                  <div class="row">
+                      <div class="col-3">
+                          <div class="search"> 
+                              <input type="text" class="form-control" placeholder="Tìm Kiếm"> 
+                              <i class="ion-ios-search-strong"></i> 
+                          </div>
+                      </div>
+                      <div class="col-5">
+                          <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 180px;margin-bottom: 15px ;">
+                      </div>
+                      <div class="col-4">
+                          <div class="logo_right" style="display: flex; justify-content: center; margin-top: 20px;">
+                              <div class="tuvan" style="display: flex; margin-right: 10px;">
+                                  <div class="iconcall">
+                                      <i class="ion-android-call" style="color: white;font-size: 30px; margin-top: 20px;"></i>
+                                  </div>
+                                  <div class="content-tuvan" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                      <p>Hỗ trợ & tư vấn</p>
+                                      <p>1900 2211</p>
+                                  </div>
+                              </div>
+                              <div class="icon-cart" style="display: flex;">
+                                  <div class="iconcall">
+                                      <a href=""><i class="ion-bag" style="color: white;font-size: 30px; margin-top: 20px;"></i></a>
+                                  </div>
+                                  <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                      <a href="/page/cart/cart.html" style="color: white;"><p>Giỏ hàng</p>
+                                      <p style="color:#4fff7b;">(3) Sản Phẩm</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!--Thanh Memu (nav)-->
+            <nav class="navbar navbar-expand-sm" style="background-color: #1b1b1b; border-bottom: 1px solid rgb(85, 85, 85)">
+                <div class="container-fluid" style="display: flex; justify-content: center;">
+                  <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                      <a class="nav-link " href="/index.html"><i class="fa-solid fa-house-chimney"></i> Trang Chủ</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link " href="/page/Gioithieu/gioithieu.html">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown"> 
+                            <a class="nav-link" href="/page/products/products.html">Sản Phẩm <i class="ion-chevron-down"></i> </a>
+                            <div class="dropdown-content"> 
+                                <a href="/page/product_main/kimcuong/kimcuong.html">Trang Sức Kim Cương</a> 
+                                <a href="/page/product_main/trantinh/trantinh.html">Trần Tình</a> 
+                                <a href="/page/product_main/vinhcuu/vinhcuu.html">Vĩnh Cửu</a> 
+                                <a href="/page/product_main/tamsinh/tamsinh.html">Tam Sinh</a>
+                            </div>
+                        </div>    
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown"> 
+                            <a class="nav-link" href="/page/gift/MomDay/Momday.html">Quà Tặng <i class="ion-chevron-down"></i>   </a>
+                            <div class="dropdown-content"> 
+                                <a href="/page/gift/MomDay/Momday.html">Ngày của mẹ</a>
+                                <a href="/page/gift/wedding/wedding.html">Kỉ niệm ngày cưới</a> 
+                                <a href="/page/gift/MomDay/Momday.html">Ngày Sinh Nhật</a> 
+                                <a href="/page/gift/wedding/wedding.html">Valentine's Day</a> 
+                                <a href="/page/gift/MomDay/Momday.html">Tốt Nghiệp</a>  
+                            </div>
+                        </div>       
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="/page/comment/comment.html">Đánh Giá</a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link " href="/page/blog/blog.html">Blog</a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link " href="/page/contact_us/lienhe.html">Liên Hệ</a>
+                      </li>
+                  </ul>
+                </div>
+            </nav>
+    </header>
+        <!--Tiêu Đề-->
+        <div class="container-fluid" style=" height:50px; background-color: #000000;">
+            <div style="display: flex; padding-top: 10px;">
+                <div> <a class="content_a" href="/index.html" style="color: rgb(255, 255, 255);">Trang Chủ</a> &nbsp;/ </div>
+                <div class="content_b" style="margin-left: 10px; color:rgb(150, 241, 153); font-weight: 700;"> Blog</div>
+            </div>
+       </div>
+       <div class="container" style="margin-top: 20px;">
+           <h3 style="color:rgb(150, 241, 153);">Blog Trang Sức</h3>
+       </div>
+       <!--Main-->
+       <div class="container" style="margin-top: 50px;margin-bottom: 50px;">
+           <div class="row">
+            <!--Left-->
+               <div class="col-3">
+                <!--Menu-->
+                   <div class="menu">
+                       <div class="title-menu">
+                           <h5>Danh mục</h5>
+                       </div>
+                       <div class="content-menu">
+                           <ul>
+                               <li><a href="/index.html"> Trang Chủ</a></li>
+                               <li><a href="/page/Gioithieu/gioithieu.html"> Giới Thiệu</a></li>
+                               <li><a href="/page/products/products.html"> Sản Phẩm</a></li>
+                               <li><a href="#" style="color:rgb(150, 241, 153);"> Tin Tức</a></li>
+                               <li><a href="/page/contact_us/lienhe.html"> Liên Hệ</a></li>
+                           </ul>
+                       </div>
+                   </div>
+                <!--Bài Viết Liên Quan-->
+                   <div class="Post" >
+                    <div class="title-Post">
+                        <h5>Bài Viết Liên Quan</h5>
+                    </div>
+                    <div class="content-Post">
+                        <div class="content-Post-1">
+                            <div class="row" style="padding: 5px 0 10px 5px;">
+                                <div class="col">
+                                    <div class="img-post">
+                                        <img src="/image/blog/blog-1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col" style="padding-left: 0;">
+                                    <small style="color: white;">Chọn Nhẫn Cưới</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-Post-1">
+                            <div class="row" style="padding: 5px 0 10px 5px;">
+                                <div class="col">
+                                    <div class="img-post">
+                                        <img src="/image/blog/blog-2.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <small style="color: white">Độc Quyền Chế Tác</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-Post-2">
+                            <div class="row" style="padding: 5px 0 10px 5px;">
+                                <div class="col">
+                                    <div class="img-post">
+                                        <img src="/image/blog/blog-3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <small style="color: white">Trang Sức Luôn Tỏa Sáng ?</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+               </div>
+            <!--Right-->
+               <div class="col-9">
+                   <div class="row" style="margin-top: 20px; margin-bottom: 25px;">
+                       <div class="col">
+                           <img class="img-main-blog" src="/image/blog/blog-1.jpg" alt="">
+                           <a class="title-main-blog" href=""><h4 >KINH NGHIỆM CHỌN NHẪN CƯỚI</h4></a>
+                           <p class="time-main-blog">24.03.2022</p>
+                           <p class="content-main-blog">Nhẫn cưới tượng trưng cho sự gắn kết bên nhau trọn đời, là minh chứng cho tình cảm, tình yêu lứa đôi....</p>
+                           <button class="btn btn-blog" type="button">Xem Thêm</button>
+                       </div>
+                       <div class="col">
+                           <img src="/image/blog/blog-7.jpg" alt="">
+                           <a class="title-main-blog" href=""><h4>Ngũ hành - Trang sức Mệnh Mộc</h4></a>
+                           <p class="time-main-blog">19.03.2022</p>
+                           <p class="content-main-blog">MỘC trong ngũ hành tượng trưng cho mùa xuân, đời sống và sự tốt tươi của cây cối.Thuộc khí Âm: MỘC mềm và dễ uốn thuộc...</p>
+                           <button class="btn btn-blog" type="button">Xem Thêm</button>
+                       </div>
+                   </div>
+                   <div class="row" style="margin-top: 20px; margin-bottom: 25px;">
+                    <div class="col">
+                        <img src="/image/blog/blog-3.jpg" alt="">
+                        <a class="title-main-blog" href=""><h4 >LÀM CÁCH NÀO ĐỂ TRANG SỨC LUÔN TỎA SÁNG ???</h4></a>
+                        <p class="time-main-blog">24.03.2022</p>
+                        <p class="content-main-blog">Ngày nay, trang sức được coi là món đồ quý giá của phái đẹp lẫn cánh mày râu. Mỗi món đồ trang sức mang một...</p>
+                        <button class="btn btn-blog" type="button">Xem Thêm</button>
+                    </div>
+                    <div class="col">
+                        <img src="/image/blog/blog-4.jpg" alt="">
+                        <a class="title-main-blog" href=""><h4>HƯỚNG DẪN ĐO SIZE NHẪN</h4></a>
+                        <p class="time-main-blog">19.03.2022</p>
+                        <p class="content-main-blog">Bên cạnh chất liệu, loại đá, mẫu mã, tuổi vàng,…size nhẫn cũng là một trong những yếu tố quyết định nhẫn có hợp với người...</p>
+                        <button class="btn btn-blog" type="button">Xem Thêm</button>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px; margin-bottom: 25px;">
+                    <div class="col">
+                        <img src="/image/blog/blog-5.jpg" alt="">
+                        <a class="title-main-blog" href=""><h4 >“Ngọc hồng lựu” Garnet - Vật bảo hộ tuyệt vời dành cho tháng 1</h4></a>
+                        <p class="time-main-blog">24.03.2022</p>
+                        <p class="content-main-blog">Người tiên phong luôn là người phải gánh vác trọng trách quan trọng nhất…và có lẽ đá quý tiên phong cũng vậy. Là ngọc thạch...</p>
+                        <button class="btn btn-blog" type="button">Xem Thêm</button>
+                    </div>
+                    <div class="col" style="margin-top: 20px; margin-bottom: 25px;">
+                        <img src="/image/blog/blog-6.jpg" alt="">
+                        <a class="title-main-blog" href=""><h4> Trang sức Xavia - doanh nghiệp độc quyền chế tác</h4></a>
+                        <p class="time-main-blog">19.03.2022</p>
+                        <p class="content-main-blog">HỎA trong ngũ hành tượng trưng cho lửa, mùa hè và sức nóng. Hỏa có thể đem lại ánh sáng, hơi ấm và hạnh phúc,...</p>
+                        <button class="btn btn-blog" type="button">Xem Thêm</button>
+                    </div>
+                </div>
+                <!--Phân Trang-->
+                <ul class="pagination justify-content-center">
+                    <li class="page-item "><a class="page-link page-link-Previous" href="javascript:void(0);">Trước</a></li>
+                    <li class="page-item "><a class="page-link page-link-1 page-link-1-a " href="javascript:void(0);">1</a></li>
+                    <li class="page-item"><a class="page-link page-link-1" href="javascript:void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link page-link-1" href="javascript:void(0);">3</a></li>
+                    <li class="page-item"><a class="page-link page-link-1" href="javascript:void(0);">4</a></li>
+                    <li class="page-item"><a class="page-link page-link-Previous" href="javascript:void(0);">Sau</a></li>
+                  </ul>
+               </div>
+           </div>
+       </div>
+         <!--Send Main-->    
+         <div class="container-fluid" style="background-color: #060606; margin: 50px 0 50px 0;">
+            <div class="sendmail">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="background-sendmail">
+                            <img src="/image/toppick/bg-sendmail.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col align-content-center">
+                        <div class="content-senmail">
+                            <h4 style="color: rgb(255, 255, 255);; text-align: center;">Đăng kí Nhận Tin !</h4>
+                            <p style="color: #dad8d8; text-align: center;">Đăng ký nhận bản tin của chúng tôi để nhận các sản phẩm mới, mã khuyến mại nhanh nhất</p>
+                            <div class="input-group mb-3 d-flex justify-content-center" style="margin-top: 5%;">
+                                <input id="input-mail" type="text" class="form-control" placeholder="Email của bạn " style="max-width: 350px; box-shadow: #dad8d8;">
+                                <button id="btn-mail" class="btn btn-success" type="submit">Đăng Kí</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!--Footer-->
+   <footer>
+    <div class="container-fluid" style="background-color: rgb(0, 0, 0);">    
+        <div class="container container-phuongcham" style="margin-bottom: 50px;">
+            <div class="container" style="margin:60px 0 20px 0 ;">
+                <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 200px;">
+            </div>
+            <div class="container" style="text-align: center; line-height: 10px; color: white;">
+                <p>You say, We'll do it -- Bạn yêu cầu, chúng tôi làm</p>
+                <p>We are here to serve you -- Chúng tôi ở đây để phục vụ bạn</p>
+                <p>Your Passion is our Satisfaction -- Đam mê của bạn là sự hài lòng của chúng tôi</p>         
+            </div>
+        </div>
+        <div class="container-fulid container-fluid-footer">
+            <div class="row">
+                <div class="col" style="margin-left: 30px;">
+                    <ul class="content-footer">
+                        <li class="title-content-footer">Hệ Thống Cửa Hàng</li>
+                        <li class="content-footer-1">> Tiền Giang</li>
+                        <li class="content-footer-1">> Bến Tre</li>
+                        <li class="content-footer-1">> Thân Cửu Nghĩa</li>
+                        </ul>
+                </div>
+                <div class="col">
+                    <ul class="content-footer">
+                        <li class="title-content-footer">Thông Tin Liên Hệ</li>
+                        <li class="content-footer-1">> Hotline: 0819385256</li>
+                        <li class="content-footer-1">> Email: Xavia@gmail.com</li>
+                        <li class="content-footer-1">> Địa chỉ: Tiền Giang</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="content-footer">
+                        <li class="title-content-footer">Liên Kết Nhanh</li>
+                        <a href="/index.html"><li>> Trang chủ</li></a> 
+                        <a href="/page/products/products.html"><li>> Sản phẩm</li></a> 
+                        <a href="/page/blog/blog.html"><li>> Blog</li></a> 
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="content-footer-last" style="list-style-type: none;">
+                        <li class="title-content-footer">Chủ đề nổi bật</li>
+                        <a href="/page/product_main/trantinh/trantinh.html"><li>> Trần Tình  </li></a>
+                        <a href="/page/product_main/vinhcuu/vinhcuu.html"><li>> Vĩnh Cửu </li></a>
+                        <a href="/page/product_main/tamsinh/tamsinh.html"><li>> Tam Sinh </li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>       
+        <div class="container-fluid container-fulid-payment">
+            <div class="payment" style="display: flex; justify-content: center;">
+            <div class="icon-payment"><img src="/image/payment/geotrust.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/Visa.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/mastercard.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/momo.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/jcb.png" alt=""></div>
+            <div class="icon-payment"><img src="/image/payment/diners.png" alt=""></div>
+            </div>
+        </div>
+    </div>       
+</footer>
+    </div>
+</body>
+</html>

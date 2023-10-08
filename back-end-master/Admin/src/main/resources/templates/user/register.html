@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--icon-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://kit.fontawesome.com/82022f6720.js" crossorigin="anonymous"></script>
+    <!-- link Css-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--Css-->
+    <link rel="stylesheet" th:href="@{/register.css}">
+    <title>Trang Sức Xavia</title>
+    <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<script language="javascript">
+  
+  function kiemtra() 	//hàm kiểm tra dữ liệu nhập vào Form
+  {
+    var username=document.getElementById("username"); 	
+  //Hàm getElementById() lấy giá trị của phần tử thẻ có id="username" và gán vào biến username 
+  //Hoặc có thể dùng: username=document.tenForm.tendoituong.value;
+    var password=document.getElementById("password")
+    var re_pass=document.getElementById("re_pass")
+    if(username.value=="")			//nếu giá trị của username là rỗng
+    {
+      alert("Nhập vào User name");	//thông báo lỗi
+      username.focus();		//đưa con trỏ về lại vị trí username trên Form
+      return false;			//trả về kết quả false (Form không Submit được)
+    }
+    if(password.value=="")
+    {	
+      alert("Nhập vào mật khẩu");
+      password.focus();
+      return false;
+    }
+    if(re_pass.value!=password.value)	//so sánh mật khẩu lần 1 và mật khẩu lần 2
+    {
+      alert("Nhập lại mật khẩu không đúng");
+      re_pass.focus();
+      return false;
+    }
+  }
+  //Trong Body, trên thẻ Form có thuộc tính onSubmit="return kiemtra();" : nghĩa là khi form được submit sẽ gọi hàm kiemtra()
+  //Nếu giá trị trả về là false thì form sẽ không được submit
+  </script>
+<body>
+  <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+    <header>
+      <!--Thanh Liên Hệ-->
+        <div class="container-fluid header_lienhe">
+            <div class="row" >
+                <div class="col">
+                    <div class="leftmap">
+                        <a class="map" href="" style="margin-left: 10%;"><i class="ion-ios-location-outline"></i>  Hệ Thống Cửa Hàng</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="rightuser" style="margin-right: 15%;">
+                         <ul style="display: flex; justify-content: right; color: white;">
+                            <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                            <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                         </ul>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+      <!--Thanh LOGO-->
+        <div class="container-fluid bg-black">
+            <div class="row">
+                <div class="col-3">
+                    <div class="search"> 
+                        <input type="text" class="form-control" placeholder="Tìm Kiếm"> 
+                        <i class="ion-ios-search-strong"></i> 
+                    </div>
+                </div>
+                <div class="col-5">
+                    <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 180px;">
+                </div>
+                <div class="col-4">
+                    <div class="logo_right" style="display: flex; justify-content: center; margin-top: 20px;">
+                        <div class="tuvan" style="display: flex; margin-right: 10px;">
+                            <div class="iconcall">
+                                <i class="ion-android-call" style="color: white;font-size: 30px; margin-top: 20px;"></i>
+                            </div>
+                            <div class="content-tuvan" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                <p>Hỗ trợ & tư vấn</p>
+                                <p>1900 2211</p>
+                            </div>
+                        </div>
+                        <div class="icon-cart" style="display: flex;">
+                            <div class="iconcall">
+                                <a href=""><i class="ion-bag" style="color: white;font-size: 30px; margin-top: 20px;"></i></a>
+                            </div>
+                            <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                <a href="/page/cart/cart.html" style="color: white;"><p>Giỏ hàng</p>
+                                <p style="color:rgb(239, 161, 169);">(0) Sản Phẩm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Thanh Memu (nav)-->
+        <nav class="navbar navbar-expand-sm" style="background-color: #1b1b1b;">
+            <div class="container-fluid" style="display: flex; justify-content: center; border-bottom: 1px solid;">
+              <ul class="navbar-nav ">
+                <li class="nav-item active">
+                  <a class="nav-link " href="/index.html"><i class="ion-home"></i> Trang Chủ</a>
+                </li>
+                <ul class="navbar-nav ">
+                  <li class="nav-item active">
+                    <a class="nav-link " href="/page/Gioithieu/gioithieu.html">Giới Thiệu</a>
+                  </li>
+                <li class="nav-item active">
+                    <div class="dropdown"> 
+                        <a class="nav-link" href="/page/products/products.html">Sản Phẩm <i class="ion-chevron-down"></i> </a>
+                        <div class="dropdown-content"> 
+                            <a href="/page/product_main/kimcuong/kimcuong.html">Trang Sức Kim Cương</a>
+                            <a href="#">Trang Sức Đá Màu </a> 
+                            <a href="#">Trang Sức Ngọc Trai </a> 
+                            <a href="#">Set Nhẫn Cưới</a> 
+                            <a href="#">Nhẫn Hẹn Ước</a>
+                            <a href="#">Sale</a> 
+                            <a href="#">Có gì mới ?</a> 
+                        </div>
+                    </div>    
+                </li>
+                <li class="nav-item active">
+                    <div class="dropdown"> 
+                        <a class="nav-link" href="/page/gift/MomDay/Momday.html">Quà Tặng <i class="ion-chevron-down"></i>   </a>
+                        <div class="dropdown-content"> 
+                            <a href="/page/gift/MomDay/Momday.html">Ngày của mẹ</a> 
+                            <a href="/page/gift/MomDay/Momday.html">Ngày Sinh Nhật</a> 
+                            <a href="/page/gift/MomDay/Momday.html">Tốt Nghiệp</a> 
+                            <a href="/page/gift/wedding/wedding.html">Kỉ niệm ngày cưới</a> 
+                            <a href="/page/gift/wedding/wedding.html">Valentine's Day</a> 
+                        </div>
+                    </div>       
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " href="/page/comment/comment.html">Đánh Giá</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link " href="/page/blog/blog.html">Blog</a>
+                  </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+  <!--Main-->
+  <div class="container" style="margin-top: 20px; margin-bottom: 50px;">
+    <span ><h3 class="contnet-title-signup">Đăng Kí</h3></span>
+  </div>
+  <div class="container-fluid px-2 px-md-4 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-6" style="margin: auto;padding-left: 5%;">
+              <!-- Carousel -->
+              <div id="demo" class="carousel slide" data-bs-ride="carousel">
+  
+              <!-- Indicators/dots -->
+              <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                  <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                  <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+              </div>
+    
+              <!-- The slideshow/carousel -->
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <img src="/image/toppick/b3.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+                      <div class="carousel-caption">
+                        <h3>Xavia</h3>
+                        <p>You say, We'll do it -- Bạn yêu cầu, chúng tôi làm</p>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+        <img src="/image/toppick/b2.jpg" alt="Chicago" class="d-block" style="width:100%">
+        <div class="carousel-caption">
+          <h3>Xavia</h3>
+          <p>We are here to serve you -- Chúng tôi ở đây để phục vụ bạn</p>
+        </div>
+                  </div>
+                  <div class="carousel-item">
+        <img src="/image/toppick/b4.jpg" alt="New York" class="d-block" style="width:100%">
+        <div class="carousel-caption">
+          <h3>Xavia</h3>
+          <p>Your Passion is our Satisfaction -- Đam mê của bạn là sự hài lòng của chúng tôi</p>
+        </div>
+                  </div>
+              </div>
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+            </div>
+            <div class="col-6">
+              <form id="frm_login" name="frm_login" method="post" action="page/user/login.html" onSubmit="return kiemtra();">
+                <div class="card2 card border-0 px-4 px-sm-5 py-5"> <small class="text-right mb-3"><a href="/page/user/login.html"><u>I already have an account</u></a></small>
+                  <h3 class="mb-1" style="color: white;">Sign up to Xavia</h3>
+                  <p class="mb-4 text-sm" style="color: white;" >Create our account and start shopping now !</p>
+                  
+                    <div class="row px-3"> <label class="mb-0">
+                      <h6 class="mb-0 text-sm" style="color: white;" >Tên Của Bạn</h6>
+                  </label> <input name="username" type="text" id="username" placeholder="Kim Ngân"> </div>
+                  <div class="row px-3"> <label class="mb-0">
+                    <h6 class="mb-0 text-sm" style="color: white;" >Email</h6>
+                </label> <input type="text" name="email" placeholder="KimNgan@email.com"> </div>
+                  
+                  <div class="row px-3"> <label class="mb-0">
+                    <h6 class="mb-0 text-sm" style="color: white;">Mật Khẩu</h6>
+                </label> <input name="password" type="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"> </div>
+                  <div class="row px-3"> <label class="mb-0">
+                          <h6 class="mb-0 text-sm" style="color: white;">Nhập Lại Mật Khẩu</h6>
+                      </label> <input name="re_pass" type="password" id="re_pass" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"> </div>
+                  <div class="row px-3 mb-3"> <small class="text-muted" style="color: white;" >By signing up, you agree our <a href="" class="text-primary">Terms of services</a> and <a href="" class="text-primary">Privacy Policy</a></small> </div>
+                  <div class="row mb-4">
+                      <div class="col-md-6"> <button type="submit" name="button" id="button" value="Submit" class="btn btn-blue text-center mb-1 py-2" style="color: white;">Create Account</button> </div>
+                  </div>
+                  <div class="row px-3 mb-4">
+                      <div class="line"></div> <small class="text-muted or text-center">OR</small>
+                      <div class="line"></div>
+                  </div>
+                  <div class="row text-center">
+                      <div class="col-sm-6">
+                          <p class="social-connect"><i class="fab fa-facebook"></i><small class="pl-3 pr-1" style="color: white;">Sign up with facebook</small></p>
+                      </div>
+                      <div class="col-sm-6">
+                          <p class="social-connect"><i class="fab fa-google-plus"></i><small class="pl-3 pr-1" style="color: white;">Sign up with google+</small></p>
+                      </div>
+                  </div>
+              </div>
+              </form>
+                
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+  </div>
+</body>
+</html>

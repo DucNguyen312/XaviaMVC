@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Ms+Madi&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #1B1B1B;
+}
+img{
+    width: 100%;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+li{
+    list-style-type: none;
+}
+.header_lienhe{
+    background-color: black;
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.map{
+    text-decoration: none;
+    color: white   ;
+}
+.map:hover{
+    color: #ff0c55  ;
+}
+.user_login {
+    margin-right: 30px;
+    color: white;
+}
+.user_register{
+    color: white;
+}
+.user_login:hover , .user_register:hover{
+    color: #ff0c55;
+}
+/* search */
+.search{
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);   
+}
+
+.search input {
+    margin-top: 30px;
+    height: 30px;
+    text-indent: 25px;
+    border-bottom: 2px solid red;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .3); 
+}
+  
+.search .ion-ios-search-strong{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    color: red;
+    font-size: 20px;
+}
+/* Thanh Menu (Nav) */
+.nav-item{
+    margin-left: 10px;
+}
+
+.nav-item a{
+    color: white
+}
+.nav-item a:hover{
+    color: #ff0c55;
+    
+}
+.navbar{
+   height: 50px;
+   display: flex;
+}
+.nav-item:hover {
+    border-bottom: 2px solid #ff0c55;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    width: 200px;
+    -webkit-box-shadow: 14px 9px 13px 3px #ff0c55; 
+    box-shadow: 14px 9px 13px 3px #ff0c55;
+    z-index: 9999;  
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color : black;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* Tiêu Đề 1 */
+.title-1{
+    color: #ed3952;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+}
+.content-title-1{
+    color: white;
+    text-align: center;
+    
+}
+
+/* banner */
+/* **********banner section ************ */
+.banner_section {
+    margin-bottom: 70px;
+}
+  
+  
+.banner_black .banner_content {
+    transition: 0.5s;
+    bottom: 25px;
+    top: inherit;
+}
+  
+
+.banner_black .banner_content h2 {
+    color: #ff0066;
+    font-weight: 400;
+    font-family: "Baloo 2", serif;
+}
+  
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .banner_black .banner_content h2 {
+      font-size: 21px;
+      line-height: 23px;
+      margin-bottom: 13px;
+}
+}
+
+.banner_black .banner_thumb:hover .banner_content {
+    transform: scale(1.1);
+}
+  
+.banner_thumb {
+    position: relative;
+    overflow: hidden;
+}
+  
+.banner_thumb::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.11);
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+  
+.banner_thumb img {
+    transition: 0.3s;
+}
+  
+.banner_thumb:hover::before {
+    opacity: 1;
+}
+  
+.banner_thumb:hover img {
+    transform: scale(1.1);
+}
+  
+.banner_black .banner_thumb:hover .banner_content {
+    transform: scale(1.1);
+}
+.banner_content {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.banner_content h2 {
+    color: #242424;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 27px;
+    margin-bottom: 15px;
+}
+
+/*list product*/
+.list-product-title{
+	width: 100%;
+	text-transform: uppercase;
+	margin-left: 5px;
+	margin-right: 5px;
+    color: white;
+
+}
+.list-product-subtitle{
+	width: 100%;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.list-product-subtitle p {
+    color: white;
+}
+
+/*product card*/
+.card-product{
+	width: 100%;
+	margin-left: 5px;
+	margin-right: 5px;
+	overflow: hidden;
+	position: relative;
+}
+.product-title{
+	margin-bottom: 0.25rem;
+}
+.card-text .product-price{
+	position: relative;
+}
+.del-price{
+	text-decoration: line-through;
+}
+.new-price{
+	color: red;
+	position: absolute;
+	right: 0.5rem;
+}
+.btn-add-to-cart{
+	background-color: rgb(247, 167, 212) !important;
+	color: white !important;
+    border: 1px solid rgb(247, 167, 212);
+}
+.btn-add-to-cart:hover{
+	background-color: red  !important;
+    border: 1px solid red ;
+}
+.btn-detail{
+    color: rgb(255, 0, 123) ;
+	border: 1px solid #ffb6e2 !important;
+}
+.btn-detail:hover{
+	color: white !important;
+	background-color:red  !important;
+}
+.sale-sticky{
+	color: white;
+	background-color: red ;
+	display: block;
+	text-align: center;
+	width: 120px;
+	position: absolute;
+	top: 11px;
+    right: -39px;
+	transform: rotate(45deg);
+}
+/* Tien Ich */
+.main-tienich{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.title-1-tienich{
+    color: #ed3952;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+}
+.content-main-title h5{
+    padding-top: 10px;
+}
+.content-title-1-tienich{
+    color: white;
+    text-align: center;
+    
+}
+.main-1-tienich{
+    background-color: #DB3E51; 
+    border-radius: 20px;
+    min-height: 220px;
+    margin-top: 10px;
+}
+.icon-tienich{
+    padding-top: 10px;
+}
+/* About */
+.content-about h1{
+    color: #ed3952;
+    font-family: 'Dancing Script', cursive;
+    
+}
+.content-about p{
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.btn-about{
+    border: 2px solid #ed3952;
+    color: #ed3952;;
+    border-radius: 1 0px;
+}
+.btn-about:hover{
+    color: white;
+    border-radius: 20px;
+    background-color: #DB3E51;
+}
+.ion-chevron-right{
+    font-size: 15px;
+}
+/* send mail */
+.content-senmail h4,.content-senmail p{
+    color: white; 
+    text-align: center
+}
+/* footer */
+.content-footer-1{
+    color: white;
+}
+.content-footer{
+    list-style-type: none; 
+    border-right: 1px solid rgb(56, 56, 56);
+}
+.title-content-footer{
+    text-transform: uppercase;
+    color : red;
+}
+.container-fulid-payment{
+    border-top: 1px solid rgb(56, 56, 56);
+    padding: 20px 0 5px;
+}
+.icon-payment{
+    margin-right: 20px;
+    padding-right: 20px;
+}

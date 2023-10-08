@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--icon-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://kit.fontawesome.com/82022f6720.js" crossorigin="anonymous"></script>
+    <!-- link Css-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--Css-->
+    <link rel="stylesheet" th:href="@{/products.css}">
+    <title>Trang Sức Xavia</title>
+    <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+
+<body>
+  <div class="container-fluid" style="padding-left: 0; padding-right : 0">
+    <header>
+        <!--Thanh Liên Hệ-->
+          <div class="container-fluid header_lienhe">
+              <div class="row" >
+                  <div class="col">
+                      <div class="leftmap">
+                          <a class="map" href="" style="margin-left: 10%;"><i class="ion-ios-location-outline"></i>  Hệ Thống Cửa Hàng</a>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="rightuser" style="margin-right: 15%;">
+                           <ul style="display: flex; justify-content: right; color: white;">
+                              <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                              <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                           </ul>                       
+                      </div>
+                  </div>
+              </div>
+          </div>
+        <!--Thanh LOGO-->
+          <div class="container-fluid bg-black" style="border-bottom: 1px solid rgb(106, 106, 106);">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="search"> 
+                          <input type="text" class="form-control" placeholder="Tìm Kiếm"> 
+                          <i class="ion-ios-search-strong"></i> 
+                      </div>
+                  </div>
+                  <div class="col-5">
+                      <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 180px;margin-bottom: 15px ;">
+                  </div>
+                  <div class="col-4">
+                      <div class="logo_right" style="display: flex; justify-content: center; margin-top: 20px;">
+                          <div class="tuvan" style="display: flex; margin-right: 10px;">
+                              <div class="iconcall">
+                                  <i class="ion-android-call" style="color: white;font-size: 30px; margin-top: 20px;"></i>
+                              </div>
+                              <div class="content-tuvan" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                  <p>Hỗ trợ & tư vấn</p>
+                                  <p>1900 2211</p>
+                              </div>
+                          </div>
+                          <div class="icon-cart" style="display: flex;">
+                              <div class="iconcall">
+                                  <a href=""><i class="ion-bag" style="color: white;font-size: 30px; margin-top: 20px;"></i></a>
+                              </div>
+                              <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                  <a href="/page/cart/cart.html" style="color: white;"><p>Giỏ hàng</p>
+                                  <p style="color:#e6a2a2;">(0) Sản Phẩm</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--Thanh Memu (nav)-->
+        <nav class="navbar navbar-expand-sm" style="background-color: #1b1b1b; border-bottom: 1px solid rgb(85, 85, 85)">
+            <div class="container-fluid" style="display: flex; justify-content: center;">
+              <ul class="navbar-nav ">
+                <li class="nav-item active">
+                  <a class="nav-link " href="/index.html"><i class="fa-solid fa-house-chimney"></i> Trang Chủ</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link " href="/page/Gioithieu/gioithieu.html">Giới Thiệu</a>
+                </li>
+                <li class="nav-item active">
+                    <div class="dropdown"> 
+                        <a class="nav-link" href="/page/products/products.html">Sản Phẩm <i class="ion-chevron-down"></i> </a>
+                        <div class="dropdown-content"> 
+                            <a href="/page/product_main/kimcuong/kimcuong.html">Trang Sức Kim Cương</a> 
+                            <a href="/page/product_main/trantinh/trantinh.html">Trần Tình</a> 
+                            <a href="/page/product_main/vinhcuu/vinhcuu.html">Vĩnh Cửu</a> 
+                            <a href="/page/product_main/tamsinh/tamsinh.html">Tam Sinh</a>
+                        </div>
+                    </div>    
+                </li>
+                <li class="nav-item active">
+                    <div class="dropdown"> 
+                        <a class="nav-link" href="/page/gift/MomDay/Momday.html">Quà Tặng <i class="ion-chevron-down"></i>   </a>
+                        <div class="dropdown-content"> 
+                            <a href="/page/gift/MomDay/Momday.html">Ngày của mẹ</a>
+                            <a href="/page/gift/wedding/wedding.html">Kỉ niệm ngày cưới</a> 
+                            <a href="/page/gift/MomDay/Momday.html">Ngày Sinh Nhật</a> 
+                            <a href="/page/gift/wedding/wedding.html">Valentine's Day</a> 
+                            <a href="/page/gift/MomDay/Momday.html">Tốt Nghiệp</a>  
+                        </div>
+                    </div>       
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " href="/page/comment/comment.html">Đánh Giá</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link " href="/page/blog/blog.html">Blog</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link " href="/page/contact_us/lienhe.html">Liên Hệ</a>
+                  </li>
+              </ul>
+            </div>
+        </nav>
+</header>
+<!--Main-->
+<!--Title-->
+<div class="container" style="margin-top: 50px;">
+        <div class="title-view">
+            <div class="row">
+                <div class="col">
+                    <div class="title">
+                        <h3>Trang Sức Xavia</h3>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-end align-content-centre ">
+                    <div class="view">
+                         <span class="btn fas fa-th px-md-2 px-1"></span> 
+                         <span class="btn fas fa-list-ul"></span>
+                         <span class=""> 428 Products</span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--Filter - Product -->
+    <div class="filter-product">
+        <div class="row">
+            <div class="col-3">
+                <div class="filter">
+                    <div class="filter-1">
+                        <h5>Danh Mục</h5>
+                        <div class="list-content">
+                            <ul style="padding-left:10px ;">
+                                <li><a href=""> New</a></li>
+                                <li><a href=""> Nhẫn</a></li>
+                                <li><a href=""> Dây Chuyền</a></li>
+                                <li><a href=""> Vòng</a></li>
+                                <li><a href=""> Hoa Tai</a></li>
+                            </ul>
+                        </div>
+                    </div>              
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="btn" data-bs-toggle="collapse" href="#collapseOne">Giá +</a>
+                            </div>
+                            <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                                <form>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> Dưới 5.000.000đ</label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> ~10.000.000đ</label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> ~15.000.000</label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> ~20.000.000đ</label> </div>                       
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">Xếp hạng +</a>
+                            </div>
+                            <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                                <form>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="check"></span> </label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span>  <span class="check"></span> </label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span>  <span class="check"></span> </label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="check"></span> </label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="check"></span> </label> </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">Chất Liệu +</a>
+                            </div>
+                            <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                                <form>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> Kim Cương</label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> Bạc</label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> Vàng</label> </div>
+                                    <div class="form-inline d-flex align-items-center py-2"> <label><input type="checkbox"> Bạch Kim</label> </div>                       
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="product">
+                    <div class="row">
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/vinhcuu/anh4cccs.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Vĩnh Cửu </a></div>
+                                <div class="price-product">999.999.999đ</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/kimcuong/kimcuong1.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Giọt Lệ Long Linh </a></div>
+                                <div class="price-product">27.999.000đ</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/kimcuong/kimcuong2.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Hoa Tuyết Sơn </a></div>
+                                <div class="price-product">12.999.000đ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/trantinh/product-6.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Bầu Trời Đầy Sao</a></div>
+                                <div class="price-product">1.999.000đ</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/trantinh/product-16.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Cung Linh Vân Mộng</a></div>
+                                <div class="price-product">899.000đ</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/trantinh/product-18.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Khúc Trần Tình</a></div>
+                                <div class="price-product">1.999.000đ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/tamsinh/product-1.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Tam Sinh Lưu Hoa</a></div>
+                                <div class="price-product">  8.888.888đ</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/trantinh/product-10.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Ma Đạo Tổ Sư </a></div>
+                                <div class="price-product">9.999.000đ</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="img-product">
+                                <img src="/image/tamsinh/product-16.jpg" alt="">
+                            </div>
+                            <div class="detail-product">
+                                <div class="name-product"><a href=""> Lục Lạc Tú Cầu</a></div>
+                                <div class="price-product">1.999.000đ</div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>          
+        </div> 
+    </div>
+</div>
+    <!--Sale-->
+    <div class="container" style="margin-top: 50px;">
+        <div class="title-product-sale" style="text-align:center;">
+            <div id="wrapper">
+                <div class="headline">   
+                  <div class="section_title">
+                    <h1>✯ Sale ✯</h1>
+                  </div>
+                </div>
+            </div> 
+        </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">-50%</span> 
+                        <div class="card-image">
+                            <img src="/image/trantinh/product-1.jpg"> 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Hoa Tai</span> 
+                            <h5 class="mb-0">Ngọc Thố</h5> 
+                            <div class="price">
+                                <span>499.000</span>
+                                <sup>249.500</sup>
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">-10%</span> 
+                        <div class="card-image">
+                            <img src="/image/tamsinh/product-10.jpg"> 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Vòng Tay </span> 
+                            <h5 class="mb-0">Linh Lung Bảo </h5> 
+                            <div class="price">
+                                <span>8.888.888</span>
+                                <sup>8.000.000</sup>
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">-10%</span> 
+                        <div class="card-image">
+                            <img src="/image/toppick/b4.jpg"> 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Nhẫn</span> 
+                            <h5 class="mb-0">Uyên Ương </h5> 
+                            <div class="price">
+                                <span>5.999.000</span>
+                                <sup>5.399.100</sup>
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">-50%</span> 
+                        <div class="card-image">
+                            <img src="/image/trantinh/product-2.jpg"> 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Vòng</span> 
+                            <h5 class="mb-0">Thần Hộ Vệ </h5> 
+                            <div class="price">
+                                <span>999.000</span>
+                                <sup>499.500</sup>
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </div>    
+    </div>
+    <!--Ngọc Trai-->
+    <div class="container" style="margin-top:60px ;">
+        <div id="wrapper">
+            <div class="headline">   
+              <div class="section_title">
+                  <h1>Trang sức Ngọc trai ✯</h1>
+              </div>
+            </div>
+        </div> 
+        <div class="product-1">
+            <div class="row">
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/anh1.png" alt="" style="max-width:300px; ">
+                    </div>       
+                </div>
+                <div class="col-8">
+                    <div class="detail-product-1">
+                        <h6>MỖI MỘT NGƯỜI PHỤ NỮ LÀ MỘT VIÊN NGỌC TRAI</h6>
+                        <p>Được ví như biểu tượng của sự thuần khiết, quý phái và đầy nữ tính.
+                          Ngọc Trai được xếp vào hàng “Ngũ Hoàng, Nhất Hậu” mà thiên nhiên ban tặng.
+                          Ngũ hoàng là: Kim Cương, Hồng Ngọc, Sapphire, Ngọc Lục Bảo, Ngọc Thạch.<br/>
+                          Nhất hậu (hoàng hậu duy nhất) chính là ngọc trai. </p>
+                        <p class="pay">25.000.000đ</p>
+                    </div>
+                    <form action="">
+                        <button class="btn btn-buy" type="button">Mua</button>
+                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="product-1">
+            <div class="row">
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/anh2.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/anh3.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="detail-product-1">
+                        <h6>NGỌC TRAI ĐƯỢC XẾP VÀO LOẠI TRÂN QUÝ TỪ NGÀN XƯA</h6>
+                        <p>Ngọc trai được tạo ra từ sinh vật sống, 
+                            mang trong mình hàng triệu tế bào sống nên toả ra ánh sáng đẹp thuần khiết mà khó loại đá quý nào có được.</p>
+                        <p class="pay">19.900.000đ</p>
+                    </div>
+                    <form action="">
+                        <button class="btn btn-buy" type="button">Mua</button>
+                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    </form>
+            </div>
+            </div>
+        </div>
+        <div class="product-1">
+            <div class="row">
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/anh4.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/anh5.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/anh6.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="detail-product-1">
+                        <h6>NGỌC TRAI</h6>
+                        <p>Ẩn chứa nhiều ý nghĩa về mặt tâm linh, phong thủy.</p>
+                        <p class="pay">18.990.000đ</p>
+                    </div>
+                    <form action="">
+                        <button class="btn btn-buy" type="button">Mua</button>
+                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Set Nhẫn Cưới-->
+    <div class="container" style="margin-top:50px ;">
+        <div id="wrapper">
+            <div class="headline">   
+              <div class="section_title">
+                  <h1  style="margin-left: 70%;">✯ Set nhẫn cưới </h1>
+              </div>
+            </div>
+        </div>
+        <div class="product-2">
+            <div class="row">
+                <div class="col-9">
+                    <div class="detail-product-2">
+                        <h6>GIÁ TRỊ CỦA MỘT CHIẾC NHẪN</h6>
+                        <p>Chiếc nhẫn cưới được đeo cho cả hai. Khi được lồng vào tay trong ngày thành hôn.<br/>
+                            Nó sẽ trở thành biểu tượng của sự ràng buộc giữa hai con người.<br/>
+                            Đồng thời,thể hiện tình yêu thương bền vững, lâu dài và vĩnh viễn của đôi uyên ương.</p>
+                        <p class="pay">99.999.999đ</p>
+                    </div>
+                    <form style="float:right ">
+                        <button class="btn btn-buy" type="button">Mua</button>
+                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    </form>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/set1.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-2">
+            <div class="row">
+                <div class="col-6">
+                    <div class="detail-product-2">
+                        <h6>TRỌN VẸN HẠNH PHÚC</h6>
+                        <p>Nhẫn là tín vật có ý nghĩa vô cùng thiêng liêng trong ngày cưới.<br/>
+                            Nó không chỉ là món đồ trang sức thông thường mà còn mang đến biểu tượng của vòng tròn hạnh phúc.</p>
+                        <p class="pay">20.000.000đ</p>
+                    </div>
+                    <form style="float:right ">
+                        <button class="btn btn-buy" type="button">Mua</button>
+                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    </form>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/set2.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/set3.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-2">
+            <div class="row">
+                <div class="col-3">
+                    <div class="detail-product-2">
+                        <h6>MINH CHỨNG</h6>
+                        <p>Trong chuỗi ngày tiếp theo của cuộc đời.
+                             Dù có khó khăn, gian khổ, buồn hay vui thì họ cũng sẽ cùng nhau vượt qua.</p>
+                        <p class="pay">18.000.000đ</p>
+                    </div>
+                    <form style="float:right ">
+                        <button class="btn btn-buy" type="button">Mua</button>
+                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    </form>       
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/set4.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/set5.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="img-product">
+                        <img src="/image/spchinh/set6.png" alt="" style="max-width:300px; ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--Đá màu -->
+    <div class="container" style="margin-top:60px ;">
+    <div id="wrapper">
+        <div class="headline">   
+          <div class="section_title">
+              <h1>Trang Sức Đá Màu ✯</h1>
+          </div>
+        </div>
+    </div> 
+    <div class="product-1">
+        <div class="row">
+            <div class="col-3">
+                <div class="img-product">
+                    <img src="/image/spchinh/da1.png" alt="" style="max-width:300px; ">
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="detail-product-1">
+                    <h6>Ý NGHĨA </h6>
+                    <p>Đá quý không chỉ có giá trị về mặt thẩm mỹ mà còn có ý nghĩa khác nhau về mặt tâm linh.
+                         Khi bạn mang viên đá biểu tượng cho ngày sinh hay mệnh của mình thì bạn sẽ gặp được nhiều may mắn,
+                          vượt qua được tai ương, đạt được những mong muốn trong cuộc sống. </p>
+                    <p class="pay">15.000.000đ</p>
+                </div>
+                <form action="">
+                    <button class="btn btn-buy" type="button">Mua</button>
+                    <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="product-1">
+        <div class="row">
+            <div class="col-3">
+                <div class="img-product">
+                    <img src="/image/spchinh/da2.png" alt="" style="max-width:300px; ">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="img-product">
+                    <img src="/image/spchinh/da3.png" alt="" style="max-width:300px; ">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="detail-product-1">
+                    <h6>VẬN MỆNH </h6>
+                    <p>Ngũ hành tương sinh, tương khắc là một quy luật. Đeo đúng màu hợp với mệnh của mình sẽ mang lại sự may mắn, hưng thịnh. </p>
+                    <p class="pay">19.900.000đ</p>
+                </div>
+                <form action="">
+                    <button class="btn btn-buy" type="button">Mua</button>
+                    <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                </form>
+        </div>
+        </div>
+    </div>
+    <div class="product-1">
+        <div class="row">
+            <div class="col-3">
+                <div class="img-product">
+                    <img src="/image/spchinh/da4.png" alt="" style="max-width:300px; ">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="img-product">
+                    <img src="/image/spchinh/da5.png" alt="" style="max-width:300px; ">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="img-product">
+                    <img src="/image/spchinh/da6.png" alt="" style="max-width:300px; ">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="detail-product-1">
+                    <h6>ĐÁ QUÝ </h6>
+                    <p>Ẩn chứa nhiều ý nghĩa về mặt phong thủy mang lại sự may mắn, thu hút ánh nhìn.</p>
+                    <p class="pay">18.990.000đ</p>
+                </div>
+                <form action="">
+                    <button class="btn btn-buy" type="button">Mua</button>
+                    <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+   </div>
+    <!--có gì mới ????-->
+    <div class="container" style="margin-top: 50px; ">
+        <div class="title-product-sale" style="text-align:center;">
+            <div id="wrapper">
+                <div class="headline">   
+                  <div class="section_title">
+                    <h1>✯ có gì mới ?✯</h1>
+                  </div>
+                </div>
+            </div> 
+        </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">New </span> 
+                        <div class="card-image">
+                            <img src="/image/spchinh/ms5.png"> 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Charm</span> 
+                            <h5 class="mb-0">Long Tâm </h5> 
+                            <p style="color:yellow;">499.000</p>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">New </span> 
+                        <div class="card-image">
+                            <img src="/image/spchinh/ms6.png"> 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Charm </span> 
+                            <h5 class="mb-0">Kim Tiền </h5> 
+                            <p style="color:yellow;">699.000</p>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">New </span> 
+                        <div class="card-image">
+                            <img src="/image/spchinh/ms4.png"> 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Charm </span> 
+                            <h5 class="mb-0">Ngũ sắc </h5> 
+                            <p style="color:yellow;">399.000</p>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card-product">     
+                        <span class="percent">New </span> 
+                        <div class="card-image">
+                            <img src="/image/spchinh/ms8.png" > 
+                        </div>  
+                        <div class="card-inner">
+                            <span>Charm</span> 
+                            <h5 class="mb-0">Cánh sen </h5> 
+                            <p style="color:yellow;">499.000</p>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-success text-uppercase btn-sm details">Mua Ngay</button>
+                                <div class="d-flex flex-row">
+                                    <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                    <span class="cart"><i class="fa fa-shopping-cart"></i></span>                      
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                
+            </div>    
+    </div>
+ 
+    <!--Footer-->
+    <footer>
+        <div class="container-fluid" style="background-color: rgb(0, 0, 0);">    
+            <div class="container container-phuongcham" style="margin-bottom: 50px;">
+                <div class="container" style="margin:60px 0 20px 0 ;">
+                    <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 200px;">
+                </div>
+                <div class="container" style="text-align: center; line-height: 10px; color: white;">
+                    <p>You say, We'll do it -- Bạn yêu cầu, chúng tôi làm</p>
+                    <p>We are here to serve you -- Chúng tôi ở đây để phục vụ bạn</p>
+                    <p>Your Passion is our Satisfaction -- Đam mê của bạn là sự hài lòng của chúng tôi</p>         
+                </div>
+            </div>
+            <div class="container-fulid container-fluid-footer">
+                <div class="row">
+                    <div class="col" style="margin-left: 30px;">
+                        <ul class="content-footer">
+                            <li class="title-content-footer">Hệ Thống Cửa Hàng</li>
+                            <li class="content-footer-1">> Tiền Giang</li>
+                            <li class="content-footer-1">> Bến Tre</li>
+                            <li class="content-footer-1">> Thân Cửu Nghĩa</li>
+                            </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="content-footer">
+                            <li class="title-content-footer">Thông Tin Liên Hệ</li>
+                            <li class="content-footer-1">> Hotline: 0819385256</li>
+                            <li class="content-footer-1">> Email: Xavia@gmail.com</li>
+                            <li class="content-footer-1">> Địa chỉ: Tiền Giang</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="content-footer">
+                            <li class="title-content-footer">Liên Kết Nhanh</li>
+                            <a href="/index.html"><li>> Trang chủ</li></a> 
+                            <a href="/page/products/products.html"><li>> Sản phẩm</li></a> 
+                            <a href="/page/blog/blog.html"><li>> Blog</li></a> 
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="content-footer-last" style="list-style-type: none;">
+                            <li class="title-content-footer">Chủ đề nổi bật</li>
+                            <a href="/page/product_main/trantinh/trantinh.html"><li>> Trần Tình  </li></a>
+                            <a href="/page/product_main/vinhcuu/vinhcuu.html"><li>> Vĩnh Cửu </li></a>
+                            <a href="/page/product_main/tamsinh/tamsinh.html"><li>> Tam Sinh </li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>       
+            <div class="container-fluid container-fulid-payment">
+                <div class="payment" style="display: flex; justify-content: center;">
+                <div class="icon-payment"><img src="/image/payment/geotrust.png" alt=""></div>
+                <div class="icon-payment"><img src="/image/payment/Visa.png" alt=""></div>
+                <div class="icon-payment"><img src="/image/payment/mastercard.png" alt=""></div>
+                <div class="icon-payment"><img src="/image/payment/momo.png" alt=""></div>
+                <div class="icon-payment"><img src="/image/payment/jcb.png" alt=""></div>
+                <div class="icon-payment"><img src="/image/payment/diners.png" alt=""></div>
+                </div>
+            </div>
+        </div>       
+    </footer>
+</div>
+</body>
+</html>
