@@ -2,7 +2,6 @@ package com.example.admin.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,8 +16,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class AdminConfig extends WebSecurityConfigurerAdapter {
 
-    public UserDetailsService adminDetailsService(){
-        return new AdminConfigService();
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return new CustomUserConfigService();
     }
 
     @Bean
@@ -29,15 +29,16 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(adminDetailsService());
+        provider.setUserDetailsService(userDetailsService());
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/*");
+        web.ignoring().antMatchers("/image/**" , "/asset/**" , "/page/**");
     }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider());
@@ -45,19 +46,20 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and()
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/image/**" , "/asset/**").permitAll()
-                .antMatchers("/page/**" , "/admin/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/admin/**").permitAll()
-                .anyRequest().authenticated()
+        http.authorizeRequests()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
+                .loginPage("/admin/login")
+                .loginProcessingUrl("/admin/do-login")
+                .defaultSuccessUrl("/admin/")
+                .permitAll()
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login");
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
+                .logoutSuccessUrl("/admin/login")
+                .permitAll();
     }
-
 }

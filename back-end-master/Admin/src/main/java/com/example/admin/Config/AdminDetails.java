@@ -12,6 +12,9 @@ import java.util.List;
 
 public class AdminDetails implements UserDetails {
     private Users admin;
+    public AdminDetails(Users admin) {
+        this.admin = admin;
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -23,31 +26,32 @@ public class AdminDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return admin.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return admin.getEmail();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
+
 }
