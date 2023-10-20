@@ -73,7 +73,7 @@
                               </div>
                               <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
                                   <a href="" style="color: white;"><p>Giỏ hàng</p>
-                                  <p style="color: red;">(3) Sản Phẩm</p>
+                                  <p style="color: red;" th:text="${items} + ' Sản Phẩm'"></p>
                               </div>
                           </div>
                       </div>
@@ -126,85 +126,53 @@
               </div>
             </nav>
         </header>
-
         <!--Main-->
-        <div class="card">
-            <div class="row">
-                <div class="col-md-8 cart">
-                    <div class="title">
-                        <div class="row">
-                            <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                            <div class="col align-self-center text-right text-muted" style="text-align:end;">3 items</div>
-                        </div>
-                    </div>    
-                    <div class="row border-top border-bottom">
-                        <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="/image/trantinh/product-11.jpg"></div>
-                            <div class="col">
-                                <div class="row text-muted">Nhẫn</div>
-                                <div class="row">Trần Tình Lệnh</div>
-                            </div>
-                            <div class="col">
-                                <a class="sl" href="#">-</a><a href="#" class="border border-dark sl1">2</a><a class="sl" href="#">+</a>
-                            </div>
-                            <div class="col">19.000.000đ <span class="close">&#10005;</span></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="/image/trantinh/product-3.jpg"></div>
-                            <div class="col">
-                                <div class="row text-muted">Dây Chuyền</div>
-                                <div class="row">XYZ</div>
-                            </div>
-                            <div class="col">
-                                <a class="sl" href="#">-</a><a href="#" class="border border-dark sl1">1</a><a class="sl" href="#">+</a>
-                            </div>
-                            <div class="col">11.000.000đ<span class="close">&#10005;</span></div>
-                        </div>
-                    </div>
-                    <div class="row border-top border-bottom">
-                        <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="/image/tamsinh/product-1.jpg"></div>
-                            <div class="col">
-                                <div class="row text-muted">Vòng</div>
-                                <div class="row">Tam Sinh Lưu Hoa</div>
-                            </div>
-                            <div class="col">
-                                <a class="sl" href="#">-</a><a href="#" class="border border-dark sl1">1</a><a class="sl" href="#">+</a>
-                            </div>
-                            <div class="col">7.000.000đ <span class="close">&#10005;</span></div>
-                        </div>
-                    </div>
-                    <div class="back-to-shop"><a href="#"><i class="fa-solid fa-left-long"></i><span>Back to shop</span></a></div>
+        <div class="container">
+            <h2>SHOPPING CART</h2>
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${itemCart}">
+                    <td style="width:5%" class="align-middle"  th:text="${item.id}"></td>
+                    <td style="width:10%">
+                        <img class="img-fluid" src="/image/tamsinh/product-1.jpg">
+                    </td>
+                    <td style="width:35%" class="align-middle" th:text="${item.name}"></td>
+                    <td style="width:0%" class="align-middle text-center" >
+                        <input th:value="${item.sold}" type="number" min="1" class="form-control form-control-sm quantity" oninput="updateTotal(this)">
+                    </td>
+                    <td style="width:20%" class="align-middle text-center price" th:text="${item.price}"></td>
+                    <td style="width:20%" class="align-middle text-center total" th:text="${item.total}" ></td>
+                    <td style="width:10%" class="align-middle text-center" >
+                        <button class="btn btn-danger" onclick="deleteRow(this.parentNode.parentNode)"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="back-to-shop"><a href="/"><i class="fa-solid fa-left-long"></i><span>Back to shop</span></a></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-11 text-end">Quantity:</div>
+                    <div class="col-1 text-start" id = "total-quantity"></div>
+                    <div class="col-11 text-end">Total:</div>
+                    <div class="col-1 text-start" id = "totals"></div>
                 </div>
-                <div class="col-md-4 summary">
-                    <div><h5><b>Summary</b></h5></div>
-                    <hr>
-                    <div class="row">
-                        <div class="col" style="padding-left:0;">SP : 3</div>
-                        <div class="col text-right"> 37.000.000đ</div>
-                    </div>
-                    <form>
-                        <p>HÌNH THỨC GIAO HÀNG</p>
-                        <select>
-                            <option class="text-muted">GH tiêu chuẩn- 200.000đ</option>
-                            <option class="text-muted">GH nhanh- 300.000đ</option>
-                        </select>             
-                        <p>ĐỊA CHỈ</p>
-                        <input id="code" placeholder="Nhập địa chỉ của bạn ....">
-                    </form>
-                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                        <div class="col">THÀNH TIỂN</div>
-                        <div class="col text-right"> 38.000.000đ</div>
-                    </div>
-                    <button class="btn">THANH TOÁN</button>
-                </div>
-            </div>         
+            </div>
         </div>
+
        <!--Footer-->
     <footer>
-        <div class="container-fluid" style="background-color: rgb(0, 0, 0);">    
+        <div class="container-fluid" style="background-color: rgb(0, 0, 0);">
             <div class="container container-phuongcham" style="margin-bottom: 50px;">
                 <div class="container" style="margin:60px 0 20px 0 ;">
                     <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 200px;">
@@ -212,7 +180,7 @@
                 <div class="container" style="text-align: center; line-height: 10px; color: white;">
                     <p>You say, We'll do it -- Bạn yêu cầu, chúng tôi làm</p>
                     <p>We are here to serve you -- Chúng tôi ở đây để phục vụ bạn</p>
-                    <p>Your Passion is our Satisfaction -- Đam mê của bạn là sự hài lòng của chúng tôi</p>         
+                    <p>Your Passion is our Satisfaction -- Đam mê của bạn là sự hài lòng của chúng tôi</p>
                 </div>
             </div>
             <div class="container-fulid container-fluid-footer">
@@ -236,9 +204,9 @@
                     <div class="col">
                         <ul class="content-footer">
                             <li class="title-content-footer">Liên Kết Nhanh</li>
-                            <a href="/index.html"><li>> Trang chủ</li></a> 
-                            <a href="/page/products/products.html"><li>> Sản phẩm</li></a> 
-                            <a href="/page/blog/blog.html"><li>> Blog</li></a> 
+                            <a href="/index.html"><li>> Trang chủ</li></a>
+                            <a href="/page/products/products.html"><li>> Sản phẩm</li></a>
+                            <a href="/page/blog/blog.html"><li>> Blog</li></a>
                         </ul>
                     </div>
                     <div class="col">
@@ -250,7 +218,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>       
+            </div>
             <div class="container-fluid container-fulid-payment">
                 <div class="payment" style="display: flex; justify-content: center;">
                 <div class="icon-payment"><img src="/image/payment/geotrust.png" alt=""></div>
@@ -261,9 +229,60 @@
                 <div class="icon-payment"><img src="/image/payment/diners.png" alt=""></div>
                 </div>
             </div>
-        </div>       
+        </div>
     </footer>
 
     </div>
+    <script>
+        function updateTotal(input) {
+            const value = input.value;
+            if (isNaN(value) || value.trim() === "")
+                input.value = "1";
+
+            const row = input.parentNode.parentNode; // Lấy hàng cha của ô input
+            const quantity = parseInt(input.value, 10);
+            const pricePerItem = parseFloat(row.querySelector(".price").innerText); // Lấy giá trị giá trong hàng
+            const total = quantity * pricePerItem;
+
+            row.querySelector(".total").innerText = total;
+            calculateTotals();
+        }
+
+        function deleteRow(row) {
+            var table = row.parentNode.parentNode;
+            var rowIndex = row.rowIndex;
+            table.deleteRow(rowIndex);
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            // Lấy danh sách các phần tử có class "quantity" và "price"
+            const quantityElements = document.querySelectorAll('.quantity');
+            const priceElements = document.querySelectorAll('.total');
+
+            // Kiểm tra nếu không có sản phẩm trong bảng
+            if (quantityElements.length === 0 || priceElements.length === 0) {
+                document.getElementById('total-quantity').textContent = '0';
+                document.getElementById('totals').textContent = '0';
+            } else {
+                // Khai báo biến để lưu tổng số lượng và tổng giá tiền
+                let totalQuantity = 0;
+                let totals = 0;
+
+                // Lặp qua các phần tử và tính tổng
+                for (let i = 0; i < quantityElements.length; i++) {
+                    const quantity = parseInt(quantityElements[i].value);
+                    const price = parseFloat(priceElements[i].textContent);
+                    totalQuantity += quantity;
+                    totals += price;
+                }
+
+                // Hiển thị tổng số lượng và tổng giá tiền lên trang
+                document.getElementById('total-quantity').textContent = totalQuantity;
+                document.getElementById('totals').textContent = totals.toFixed(2);
+            }
+        }
+        calculateTotals();
+    </script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.example.admin.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -36,7 +37,7 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/image/**" , "/asset/**" , "/page/**");
+        web.ignoring().antMatchers("/image/**" , "/asset/**" , "/page/**" , "/");
     }
 
     @Override
@@ -47,6 +48,11 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers(HttpMethod.POST , "/cart/**").permitAll()
+                .antMatchers(HttpMethod.GET , "/cart/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/cart/**").permitAll()
+                .antMatchers(HttpMethod.DELETE , "/cart/**").permitAll()
+
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .and()
                 .formLogin()

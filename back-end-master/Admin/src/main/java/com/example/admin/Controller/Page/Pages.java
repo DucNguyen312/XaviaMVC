@@ -45,8 +45,6 @@ public class Pages {
     public String Contract_us() {return "user/lienhe";}
     @GetMapping("/comment")
     public String Comment() {return "user/comment";}
-    @GetMapping("/cart")
-    public String Cart() {return "user/cart";}
     @GetMapping("/blog")
     public String Blog(){return "user/blog";}
 

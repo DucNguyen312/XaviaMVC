@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,7 +74,7 @@
                             </div>
                             <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
                                 <a href="/page/cart" style="color: white;"><p>Giỏ hàng</p>
-                                    <p style="color:#fcf686;">(3) Sản Phẩm</p>
+                                    <p style="color:#fcf686;"> <span th:text="${items}"></span> Sản Phẩm</p>
                             </div>
                         </div>
                     </div>
@@ -179,42 +180,41 @@
     <!-- Thanh giới thiệu sản phẩm chính-->
     <div class="container product-main" style="margin-top: 15px; margin-bottom: 50px;">
         <div class="row" >
-            <img id="img-product-main-title" class="mx-auto d-block" src="./image/toppick/header-product.png" alt="" style="width: 500px; height: 200px;">
+            <img id="img-product-main-title" class="mx-auto d-block" src="/image/toppick/header-product.png" alt="" style="width: 500px; height: 200px;">
         </div>
         <div class="row">
             <div class="col img-product-main-1" style="width: 20%;">
                 <button type="button" class="btn btn-product">
-                    <img class="product-img" src="./image/toppick/product-review-1.png" alt="">
+                    <img class="product-img" src="/image/toppick/product-review-1.png" alt="">
                     <p class="content-product">New</p>
                 </button>
             </div>
             <div class="col img-product-main-2" style="width: 20%;">
                 <button type="button" class="btn btn-product">
-                    <img class="product-img" src="./image/toppick/product-review-2.png" alt="">
+                    <img class="product-img" src="/image/toppick/product-review-2.png" alt="">
                     <p class="content-product">Bracelets</p>
                 </button>
             </div>
             <div class="col img-product-main-3" style="width: 20%;">
                 <button type="button" class="btn btn-product">
-                    <img class="product-img" src="./image/toppick/product-review-3.png" alt="">
+                    <img class="product-img" src="/image/toppick/product-review-3.png" alt="">
                     <p class="content-product">Necklace</p>
                 </button>
             </div>
             <div class="col img-product-main-4" style="width: 20%;">
                 <button type="button" class="btn btn-product">
-                    <img class="product-img" src="./image/toppick/product-review-4.png" alt="">
+                    <img class="product-img" src="/image/toppick/product-review-4.png" alt="">
                     <p class="content-product">Ring</p>
                 </button>
             </div>
             <div class="col img-product-main-5" style="width: 20%;">
                 <button type="button" class="btn btn-product">
-                    <img class="product-img" src="./image/toppick/product-review-5.png" alt="">
+                    <img class="product-img" src="/image/toppick/product-review-5.png" alt="">
                     <p class="content-product">Earring</p>
                 </button>
             </div>
         </div>
     </div>
-
 
     <!--Sản Phẩm Nổi Bật-->
     <section class="banner_section banner_black">
@@ -234,7 +234,7 @@
                 <div class="col-4 col-lg-4 col-md-4">
                     <div class="single_banner single_banner-1">
                         <div class="banner_thumb">
-                            <a href="/page/product_main/trantinh"><img src="image/banner/bg-1.jpg" alt="banner1" style="max-width: 100%; height: auto;"></a>
+                            <a href="/page/product_main/trantinh"><img src="/image/banner/bg-1.jpg" alt="banner1" style="max-width: 100%; height: auto;"></a>
                             <div class="banner_content">
                                 <p>New Design</p>
                                 <h2>Trần Tình</h2>
@@ -246,7 +246,7 @@
                 <div class="col-4 col-lg-4 col-md-4">
                     <div class="single_banner single_banner-2">
                         <div class="banner_thumb">
-                            <a href="/page/product_main/vinhcuu"><img src="image/banner/bg-3.jpg" alt="banner2" style="max-width: 100%; height: auto;"></a>
+                            <a href="/page/product_main/vinhcuu"><img src="/image/banner/bg-3.jpg" alt="banner2" style="max-width: 100%; height: auto;"></a>
                             <div class="banner_content">
                                 <p>Bestselling Rings</p>
                                 <h2>Vĩnh Cửu</h2>
@@ -258,7 +258,7 @@
                 <div class="col-4 col-lg-4 col-md-4">
                     <div class="single_banner single_banner-3">
                         <div class="banner_thumb">
-                            <a href="/page/product_main/tamsinh"><img src="image/banner/bg-2.jpg" alt="banner3" style="max-width: 100%; height: auto;"></a>
+                            <a href="/page/product_main/tamsinh"><img src="/image/banner/bg-2.jpg" alt="banner3" style="max-width: 100%; height: auto;"></a>
                             <div class="banner_content">
                                 <p>Featured Rings</p>
                                 <h2>Tam Sinh</h2>
@@ -447,9 +447,9 @@
                         <p>Ẩn chứa nhiều ý nghĩa về mặt phong thủy mang lại sự may mắn, thu hút ánh nhìn.</p>
                         <p class="pay">18.990.000đ</p>
                     </div>
-                    <form action="">
-                        <button class="btn btn-buy" type="button">Mua Ngay</button>
-                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    <form th:action="@{/page/cart/add_product_cart/1}" method="get">
+                        <button class="btn btn-buy" type="submit" name="action" value="buy">Mua Ngay</button>
+                        <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
                     </form>
                 </div>
             </div>
@@ -596,10 +596,10 @@
     <!--chạy qc-->
     <div class="container-fluid">
         <marquee id="marq" scrollamount="10" direction="left" loop="50" scrolldelay="0" onmouseover="this.stop()" onmouseout="this.start()">
-            <img src="./image/toppick/banner3.jpg" title="" width="200" height="300"/>
-            <img src="./image/toppick/banner1.jpg" title="" width="200" height="300"/>
-            <img src="./image/toppick/banner4.jpg" title="" width="200" height="300"/>
-            <img src="./image/toppick/banner2.jpg" title="" width="200" height="300"/>
+            <img src="/image/toppick/banner3.jpg" title="" width="200" height="300"/>
+            <img src="/image/toppick/banner1.jpg" title="" width="200" height="300"/>
+            <img src="/image/toppick/banner4.jpg" title="" width="200" height="300"/>
+            <img src="/image/toppick/banner2.jpg" title="" width="200" height="300"/>
         </marquee>
     </div>
     <!--Blog-->
@@ -616,7 +616,7 @@
         <div class="row">
             <div class="col-4">
                 <div class="main-blog">
-                    <div class="image-blog"><img class="img-blog"  src="./image/blog/blog-1.jpg" alt="" style="max-width: 100%;"></div>
+                    <div class="image-blog"><img class="img-blog"  src="/image/blog/blog-1.jpg" alt="" style="max-width: 100%;"></div>
                     <div class="content-blog">
                         <p class="time-blog" style="color: white;">December 3, 2022</p>
                         <a href="/page/blog"> <h4 class="content-title-blog">Kinh Nghiệm Chọn Nhẫn Cưới</h4></a>
@@ -627,7 +627,7 @@
             </div>
             <div class="col-4">
                 <div class="main-blog">
-                    <div class="image-blog"><img class="img-blog" src="./image/blog/blog-2.jpg" alt="" style="max-width: 100%;"></div>
+                    <div class="image-blog"><img class="img-blog" src="/image/blog/blog-2.jpg" alt="" style="max-width: 100%;"></div>
                     <div class="content-blog">
                         <p class="time-blog" style="color: white;">November 22, 2022</p>
                         <a href="/page/blog"><h4 class="content-title-blog">Trang sức Xavia - doanh nghiệp độc quyền chế tác...</h4></a>
@@ -638,7 +638,7 @@
             </div>
             <div class="col-4">
                 <div class="main-blog">
-                    <div class="image-blog"><img class="img-blog" src="./image/blog/blog-3.jpg" alt="" style="max-width: 100%;"></div>
+                    <div class="image-blog"><img class="img-blog" src="/image/blog/blog-3.jpg" alt="" style="max-width: 100%;"></div>
                     <div class="content-blog">
                         <p class="time-blog" style="color: white;">September 24, 2022</p>
                         <a href="/page/blog"><h4 class="content-title-blog">Làm cách nào để trang sức luôn tỏa sáng ?</h4></a>
@@ -714,6 +714,15 @@
             </div>
         </div>
     </footer>
+
+    <div th:attr="data-result-message=${result_message}"></div>
+    <script th:inline="javascript">
+        var message = document.querySelector('[data-result-message]').getAttribute('data-result-message');
+        if (message) {
+            alert(message);
+        }
+    </script>
+
 
     <!--Backtop-->
     <div id="backtop" class="wow bounceInDown" onclick="topFunction()">

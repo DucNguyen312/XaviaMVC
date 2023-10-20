@@ -1,7 +1,9 @@
 package com.example.admin.Controller;
 
+import com.example.library.Model.Products;
 import com.example.library.Model.Role;
 import com.example.library.Model.Users;
+import com.example.library.Repository.ProductRepository;
 import com.example.library.Repository.RoleRepository;
 import com.example.library.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +23,17 @@ public class DataDummy implements CommandLineRunner {
     private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
         addUser();
         addRole();
         addUser_Role();
+        addProduct();
     }
+
 
     public void addUser(){
         if(!userRepository.existsByEmail("ADMIN@gmail.com")) {
@@ -67,6 +73,18 @@ public class DataDummy implements CommandLineRunner {
             }
         }
     }
+
+    public void addProduct(){
+        Products p1 = new Products();
+        p1.setName("Sản phẩm 1");
+        p1.setPrice(100000);
+        p1.setQuantity(20);
+        p1.setSold(0);
+        p1.setNote("");
+        productRepository.save(p1);
+    }
+
+
 
 
 }
