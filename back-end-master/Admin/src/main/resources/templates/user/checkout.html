@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--icon-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://kit.fontawesome.com/82022f6720.js" crossorigin="anonymous"></script>
+    <!-- link Css-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--Css-->
+    <link rel="stylesheet" th:href="@{/checkout.css}">
+    <title>Trang Sức Xavia</title>
+    <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+
+<body>
+<div class="container-fluid container-fluid-main">
+    <header>
+        <!--Thanh Liên Hệ-->
+        <div class="container-fluid header_lienhe">
+            <div class="row" >
+                <div class="col">
+                    <div class="leftmap">
+                        <a class="map" href="" style="margin-left: 10%;"><i class="ion-ios-location-outline"></i>  Hệ Thống Cửa Hàng</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="rightuser" style="margin-right: 15%;">
+                        <ul style="display: flex; justify-content: right; color: white;">
+                            <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                            <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Thanh LOGO-->
+        <div class="container-fluid bg-black">
+            <div class="row">
+                <div class="col-3">
+                    <div class="search">
+                        <input type="text" class="form-control" placeholder="Tìm Kiếm">
+                        <i class="ion-ios-search-strong"></i>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 180px;">
+                </div>
+                <div class="col-4">
+                    <div class="logo_right" style="display: flex; justify-content: center; margin-top: 20px;">
+                        <div class="tuvan" style="display: flex; margin-right: 10px;">
+                            <div class="iconcall">
+                                <i class="ion-android-call" style="color: white;font-size: 30px; margin-top: 20px;"></i>
+                            </div>
+                            <div class="content-tuvan" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                <p>Hỗ trợ & tư vấn</p>
+                                <p>1900 2211</p>
+                            </div>
+                        </div>
+                        <div class="icon-cart" style="display: flex;">
+                            <div class="iconcall">
+                                <a href=""><i class="ion-bag" style="color: white;font-size: 30px; margin-top: 20px;"></i></a>
+                            </div>
+                            <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
+                                <a href="" style="color: white;"><p>Giỏ hàng</p>
+                                    <p style="color: red;" th:text="${items} + ' Sản Phẩm'"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Thanh Memu (nav)-->
+        <nav class="navbar navbar-expand-sm" style="background-color: #1b1b1b; border-bottom: 1px solid;">
+            <div class="container-fluid" style="display: flex; justify-content: center;">
+                <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="/index.html"><i class="ion-home"></i> Trang Chủ</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="#">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <a class="nav-link" href="/page/products/products.html">Sản Phẩm <i class="ion-chevron-down"></i> </a>
+                            <div class="dropdown-content">
+                                <a href="/page/product_main/kimcuong/kimcuong.html">Trang Sức Kim Cương</a>
+                                <a href="/page/product_main/trantinh/trantinh.html">Trần Tình</a>
+                                <a href="/page/product_main/vinhcuu/vinhcuu.html">Vĩnh Cửu</a>
+                                <a href="/page/product_main/tamsinh/tamsinh.html">Tam Sinh</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <a class="nav-link" href="">Quà Tặng <i class="ion-chevron-down"></i>   </a>
+                            <div class="dropdown-content">
+                                <a href="#">Ngày của mẹ</a>
+                                <a href="#">Ngày Sinh Nhật</a>
+                                <a href="#">Tốt Nghiệp</a>
+                                <a href="#">Kỉ niệm ngày cưới</a>
+                                <a href="#">Valentine's Day</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="/page/comment/comment.html">Đánh Giá</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="/page/blog/blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="/page/contact_us/lienhe.html">Liên Hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--Main-->
+    <div class="container">
+        <h2>Thanh toán</h2>
+        <form>
+            <div class="row mt-2">
+                <div class="col">
+                    <label>Họ và tên:</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Ex: Trương Đỗ Kim Ngân">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <label>Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+                <div class="col">
+                    <label>Số điện thoại</label>
+                    <input type="number" class="form-control" placeholder="Enter number phone" name="numberPhone">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <label>Địa chỉ</label>
+                    <input type="text" class="form-control" id="address" placeholder="Ex: abc , abc , ...">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <label>Chọn phương thức thanh toán</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Chọn phương thức</option>
+                        <option value="1">COD</option>
+                        <option value="2">ZaloPay</option>
+                        <option value="3">Momo</option>
+                        <option value="4">ATM</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-2 mb-4">
+                <div class="col">
+                    <label>Ghi chú</label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-danger">Xác nhận</button>
+            </div>
+        </form>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <div class="container-fluid" style="background-color: rgb(0, 0, 0);">
+            <div class="container container-phuongcham" style="margin-bottom: 50px;">
+                <div class="container" style="margin:60px 0 20px 0 ;">
+                    <img class="mx-auto d-block" src="/image/logo.jpg" alt="" style="width: 200px;">
+                </div>
+                <div class="container" style="text-align: center; line-height: 10px; color: white;">
+                    <p>You say, We'll do it -- Bạn yêu cầu, chúng tôi làm</p>
+                    <p>We are here to serve you -- Chúng tôi ở đây để phục vụ bạn</p>
+                    <p>Your Passion is our Satisfaction -- Đam mê của bạn là sự hài lòng của chúng tôi</p>
+                </div>
+            </div>
+            <div class="container-fulid container-fluid-footer">
+                <div class="row">
+                    <div class="col" style="margin-left: 30px;">
+                        <ul class="content-footer">
+                            <li class="title-content-footer">Hệ Thống Cửa Hàng</li>
+                            <li class="content-footer-1">> Tiền Giang</li>
+                            <li class="content-footer-1">> Bến Tre</li>
+                            <li class="content-footer-1">> Thân Cửu Nghĩa</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="content-footer">
+                            <li class="title-content-footer">Thông Tin Liên Hệ</li>
+                            <li class="content-footer-1">> Hotline: 0819385256</li>
+                            <li class="content-footer-1">> Email: Xavia@gmail.com</li>
+                            <li class="content-footer-1">> Địa chỉ: Tiền Giang</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="content-footer">
+                            <li class="title-content-footer">Liên Kết Nhanh</li>
+                            <a href="/index.html"><li>> Trang chủ</li></a>
+                            <a href="/page/products/products.html"><li>> Sản phẩm</li></a>
+                            <a href="/page/blog/blog.html"><li>> Blog</li></a>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="content-footer-last" style="list-style-type: none;">
+                            <li class="title-content-footer">Chủ đề nổi bật</li>
+                            <a href="/page/product_main/trantinh/trantinh.html"><li>> Trần Tình  </li></a>
+                            <a href="/page/product_main/vinhcuu/vinhcuu.html"><li>> Vĩnh Cửu </li></a>
+                            <a href="/page/product_main/tamsinh/tamsinh.html"><li>> Tam Sinh </li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid container-fulid-payment">
+                <div class="payment" style="display: flex; justify-content: center;">
+                    <div class="icon-payment"><img src="/image/payment/geotrust.png" alt=""></div>
+                    <div class="icon-payment"><img src="/image/payment/Visa.png" alt=""></div>
+                    <div class="icon-payment"><img src="/image/payment/mastercard.png" alt=""></div>
+                    <div class="icon-payment"><img src="/image/payment/momo.png" alt=""></div>
+                    <div class="icon-payment"><img src="/image/payment/jcb.png" alt=""></div>
+                    <div class="icon-payment"><img src="/image/payment/diners.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

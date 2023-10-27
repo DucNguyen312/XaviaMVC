@@ -45,27 +45,30 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers(HttpMethod.POST , "/cart/**").permitAll()
-                .antMatchers(HttpMethod.GET , "/cart/**").permitAll()
-                .antMatchers(HttpMethod.PUT, "/cart/**").permitAll()
-                .antMatchers(HttpMethod.DELETE , "/cart/**").permitAll()
-
+        http
+            .authorizeRequests()
+                .antMatchers(HttpMethod.POST , "/page/**").permitAll()
+                .antMatchers(HttpMethod.GET , "/page/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/page/**").permitAll()
+                .antMatchers(HttpMethod.DELETE , "/page/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .and()
-                .formLogin()
+            .formLogin()
                 .loginPage("/admin/login")
                 .loginProcessingUrl("/admin/do-login")
                 .defaultSuccessUrl("/admin/")
                 .permitAll()
                 .and()
-                .logout()
+            .logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
                 .logoutSuccessUrl("/admin/login")
                 .permitAll();
     }
+
+
 }

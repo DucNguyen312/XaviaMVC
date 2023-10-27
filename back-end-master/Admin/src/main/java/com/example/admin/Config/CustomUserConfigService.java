@@ -16,19 +16,14 @@ import java.util.stream.Collectors;
 public class CustomUserConfigService implements UserDetailsService {
 
     @Autowired
-    private UserRepository adminRepository;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users admin = adminRepository.findByEmail(username);
-        if(admin == null){
+        Users user = userRepository.findByEmail(username);
+        if (user == null) {
             throw new UsernameNotFoundException("Could not find username");
         }
-        return new User(
-                admin.getEmail(),
-                admin.getPassword(),
-                admin.getRoles()
-                        .stream()
-                        .map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList()));
+        return new AdminDetails(user);
     }
 }
