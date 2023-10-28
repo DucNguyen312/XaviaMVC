@@ -176,7 +176,7 @@
         </div>
     </div>
 
-    <!---->
+
     <!-- Thanh giới thiệu sản phẩm chính-->
     <div class="container product-main" style="margin-top: 15px; margin-bottom: 50px;">
         <div class="row" >
@@ -303,9 +303,9 @@
                             Nhất hậu (hoàng hậu duy nhất) chính là ngọc trai. </p>
                         <p class="pay">25.000.000đ</p>
                     </div>
-                    <form action="">
-                        <button class="btn btn-buy" type="button">Mua Ngay</button>
-                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    <form th:action="@{/page/cart/add_product_cart/1}" method="get">
+                        <button class="btn btn-buy" type="submit" name="action" value="buy">Mua Ngay</button>
+                        <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
                     </form>
                 </div>
             </div>
@@ -329,9 +329,9 @@
                             mang trong mình hàng triệu tế bào sống nên toả ra ánh sáng đẹp thuần khiết mà khó loại đá quý nào có được.</p>
                         <p class="pay">19.900.000đ</p>
                     </div>
-                    <form action="">
-                        <button class="btn btn-buy" type="button">Mua Ngay</button>
-                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    <form th:action="@{/page/cart/add_product_cart/2}" method="get">
+                        <button class="btn btn-buy" type="submit" name="action" value="buy">Mua Ngay</button>
+                        <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
                     </form>
                 </div>
             </div>
@@ -359,9 +359,9 @@
                         <p>Ẩn chứa nhiều ý nghĩa về mặt tâm linh, phong thủy.</p>
                         <p class="pay">18.990.000đ</p>
                     </div>
-                    <form action="">
-                        <button class="btn btn-buy" type="button">Mua Ngay</button>
-                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    <form th:action="@{/page/cart/add_product_cart/3}" method="get">
+                        <button class="btn btn-buy" type="submit" name="action" value="buy">Mua Ngay</button>
+                        <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
                     </form>
                 </div>
             </div>
@@ -392,9 +392,9 @@
                             vượt qua được tai ương, đạt được những mong muốn trong cuộc sống. </p>
                         <p class="pay">15.000.000đ</p>
                     </div>
-                    <form action="">
-                        <button class="btn btn-buy" type="button">Mua Ngay</button>
-                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    <form th:action="@{/page/cart/add_product_cart/4}" method="get">
+                        <button class="btn btn-buy" type="submit" name="action" value="buy">Mua Ngay</button>
+                        <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
                     </form>
                 </div>
             </div>
@@ -417,9 +417,9 @@
                         <p>Ngũ hành tương sinh, tương khắc là một quy luật. Đeo đúng màu hợp với mệnh của mình sẽ mang lại sự may mắn, hưng thịnh. </p>
                         <p class="pay">19.900.000đ</p>
                     </div>
-                    <form action="">
-                        <button class="btn btn-buy" type="button">Mua Ngay</button>
-                        <button class="btn btn-cart" type="button"><i class="fa-brands fa-opencart"></i></button>
+                    <form th:action="@{/page/cart/add_product_cart/5}" method="get">
+                        <button class="btn btn-buy" type="submit" name="action" value="buy">Mua Ngay</button>
+                        <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
                     </form>
                 </div>
             </div>
@@ -447,7 +447,7 @@
                         <p>Ẩn chứa nhiều ý nghĩa về mặt phong thủy mang lại sự may mắn, thu hút ánh nhìn.</p>
                         <p class="pay">18.990.000đ</p>
                     </div>
-                    <form th:action="@{/page/cart/add_product_cart/1}" method="get">
+                    <form th:action="@{/page/cart/add_product_cart/6}" method="get">
                         <button class="btn btn-buy" type="submit" name="action" value="buy">Mua Ngay</button>
                         <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
                     </form>
