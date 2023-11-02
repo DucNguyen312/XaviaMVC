@@ -17,7 +17,8 @@ public class Order {
     @Column(name = "order_id")
     private long id;
     private Date orderDate;
-    private float total_price;
+    private int total_quantity;
+    private double total_price;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

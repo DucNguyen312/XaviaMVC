@@ -21,6 +21,7 @@ public class CartController {
         int items = cartService.countItemsInCart();
         model.addAttribute("items" , items);
 
+
         List<Product_Items> p = cartService.viewCart();
         model.addAttribute("itemCart" , p);
         return "user/cart";

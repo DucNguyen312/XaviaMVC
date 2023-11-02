@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +21,16 @@
     <title>Trang Sức Xavia</title>
     <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -129,34 +139,35 @@
     <!--Main-->
     <div class="container">
         <h2>Thanh toán</h2>
-        <form>
+        <form id="myForm" action="/page/saveCustomer" method="post" >
             <div class="row mt-2">
                 <div class="col">
                     <label>Họ và tên:</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Ex: Trương Đỗ Kim Ngân">
+                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Ex: Trương Đỗ Kim Ngân"  required>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col">
                     <label>Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email"  required>
+                    <span class="error-message" id="emailError"></span>
                 </div>
                 <div class="col">
                     <label>Số điện thoại</label>
-                    <input type="number" class="form-control" placeholder="Enter number phone" name="numberPhone">
+                    <input type="text" class="form-control" id="numberPhone" placeholder="Enter number phone" name="numberPhone"  required>
+                    <span class="error-message" id="numberPhoneError"></span>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col">
                     <label>Địa chỉ</label>
-                    <input type="text" class="form-control" id="address" placeholder="Ex: abc , abc , ...">
+                    <input type="text" class="form-control" id="address" placeholder="Ex: abc, abc, ..." name="address"  required>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col">
                     <label>Chọn phương thức thanh toán</label>
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Chọn phương thức</option>
+                    <select class="custom-select mr-sm-2" id="paymentMethod" required>
                         <option value="1">COD</option>
                         <option value="2">ZaloPay</option>
                         <option value="3">Momo</option>
@@ -167,11 +178,11 @@
             <div class="row mt-2 mb-4">
                 <div class="col">
                     <label>Ghi chú</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <textarea class="form-control" rows="5" id="note" name="note" ></textarea>
                 </div>
             </div>
             <div class="row">
-                <button type="button" class="btn btn-danger">Xác nhận</button>
+                <button type="submit" class="btn btn-danger" id="submitButton" name="submit" value="Submit">Xác Nhận</button>
             </div>
         </form>
     </div>
@@ -237,7 +248,52 @@
             </div>
         </div>
     </footer>
-
 </div>
+<script>
+    document.getElementById("submitButton").addEventListener("click", function (event) {
+        var email = document.getElementById("email");
+        var numberPhone = document.getElementById("numberPhone");
+        var formIsValid = true;
+
+        // Reset error messages and styles
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("numberPhoneError").textContent = "";
+
+        email.classList.remove("error");
+        numberPhone.classList.remove("error");
+
+        // Check email format using a regular expression
+        var emailValue = email.value.trim();
+        if (emailValue !== "") {
+            // Check email format using a regular expression
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailValue.match(emailPattern)) {
+                document.getElementById("emailError").textContent = "Email không hợp lệ. Vui lòng kiểm tra lại.";
+                email.classList.add("error");
+                formIsValid = false;
+            }
+        }
+
+        // Check if the phone number starts with a digit and has 10 digits
+        var phonePattern = /^[0-9]/;
+        if(numberPhone === ""){
+            document.getElementById("numberPhoneError").textContent = "Vui lòng nhập số điện thoại";
+            numberPhone.classList.add("error");
+            formIsValid = false;
+        }
+        if (!numberPhone.value.match(phonePattern) || numberPhone.value.length !== 10) {
+            document.getElementById("numberPhoneError").textContent = "Số điện thoại phải bắt đầu bằng số từ 0-9 và có 10 chữ số.";
+            numberPhone.classList.add("error");
+            formIsValid = false;
+        }
+
+        if (!formIsValid) {
+            event.preventDefault();
+        }
+
+    });
+
+
+</script>
 </body>
 </html>

@@ -16,10 +16,11 @@ public class CartService {
     private ProductRepository productRepository;
 
     public ArrayList<Product_Items> cart = new ArrayList<>();
+    public boolean isCartCleared = false;
     public boolean addCart(long id) {
         Optional<Products> optionalProducts = productRepository.findById(id);
-        if (optionalProducts.isPresent()) {
-            Product_Items products = new Product_Items();
+            if (optionalProducts.isPresent()) {
+                Product_Items products = new Product_Items();
             products.setId(optionalProducts.get().getId());
             products.setName(optionalProducts.get().getName());
             products.setPrice(optionalProducts.get().getPrice());
@@ -58,8 +59,44 @@ public class CartService {
         return cart.size();
     }
 
-
     public List<Product_Items> viewCart() {
         return cart;
     }
+
+    public void ClearList(){
+        cart.clear();
+        isCartCleared = true;
+    }
+
+    public String Checkout(long id , int sold){
+        if (!isCartCleared)
+            ClearList();
+        Optional<Products> p = productRepository.findById(id);
+        if(p.isPresent()){
+            for (Product_Items productItems : cart) {
+                if (productItems.getId().equals(p.get().getId())) {
+                    cart.remove(productItems);
+                    break;
+                }
+            }
+            Product_Items product_items = new Product_Items();
+            product_items.setId(p.get().getId());
+            product_items.setName(p.get().getName());
+            product_items.setPrice(p.get().getPrice());
+            product_items.setQuantity(p.get().getQuantity());
+
+            //số lượng sản phẩm hiện tại
+            int quantity_present = p.get().getQuantity() - p.get().getSold();
+            if (sold > quantity_present){
+                return "Sản phẩm " + product_items.getName() +" đã hết hàng";
+            }
+            product_items.setSold(sold);
+            product_items.setTotal(sold * product_items.getPrice());
+            cart.add(product_items);
+            return null;
+        }
+        return null;
+    }
+
+
 }

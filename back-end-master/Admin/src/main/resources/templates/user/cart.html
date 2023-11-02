@@ -149,7 +149,7 @@
                     </td>
                     <td style="width:35%" class="align-middle" th:text="${item.name}"></td>
                     <td style="width:0%" class="align-middle text-center" >
-                        <input th:value="${item.sold}" type="number" min="1" class="form-control form-control-sm quantity" oninput="updateTotal(this)" style="background-color: #1B1B1B; color: white;">
+                        <input th:value="${item.sold}" type="number" min="1" th:max="${item.quantity - item.sold + 1}" class="form-control form-control-sm quantity" oninput="updateTotal(this)" style="background-color: #1B1B1B; color: white;">
                     </td>
                     <td style="width:20%" class="align-middle text-center price" th:text="${item.price}"></td>
                     <td style="width:20%" class="align-middle text-center total" th:text="${item.total}" ></td>
@@ -166,6 +166,13 @@
                     <div class="col-1 text-start" id = "total-quantity"></div>
                     <div class="col-11 text-end">Total:</div>
                     <div class="col-1 text-start" id = "totals"></div>
+                </div>
+            </div>
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col text-end">
+                        <button class="btn btn-danger" type="submit" onclick="processTableData()"><a th:href="@{/page/checkout}">Thanh toán</a></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -283,6 +290,37 @@
             }
         }
         calculateTotals();
+
+        //Lay du lieu
+        function processTableData() {
+            var tableRows = document.querySelectorAll("table tbody tr");
+            var dataToSend = [];
+
+            tableRows.forEach(function(row) {
+                var id = row.querySelector("td:nth-child(1)").textContent; // Lấy giá trị cột ID
+                var sold = row.querySelector("td:nth-child(4) input.quantity").value; // Lấy giá trị ô input số lượng
+
+                dataToSend.push({ id: id, sold: sold });
+            });
+            sendDataToServer(dataToSend);
+        }
+
+        function sendDataToServer(data) {
+            $.ajax({
+                type: "POST",
+                url: "/page/checkout",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                success: function(response) {
+                    if (response.status === "Loi") {
+
+                    }
+                },
+                error: function(err) {
+                    // Xử lý lỗi (nếu có)
+                }
+            });
+        }
     </script>
 </body>
 </html>

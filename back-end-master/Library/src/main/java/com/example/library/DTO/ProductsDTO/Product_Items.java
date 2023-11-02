@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class Product_Items {
     private Long id;
     private String name;
-    private int price;
+    private double price;
     private int quantity;
     private int sold;
     private double total;
