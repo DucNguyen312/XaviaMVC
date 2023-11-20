@@ -21,4 +21,5 @@ public class Customer {
     private String numberPhone;
     private String address;
     private String note;
+    private int accumulatedPoints;
 }

@@ -4,5 +4,6 @@ import com.example.library.DTO.CustomerDTO.CustomerDTO;
 import com.example.library.Model.Customer;
 
 public interface CustomerService {
-    Customer addNewCustomer(CustomerDTO customerDTO);
+    Customer addNewCustomer(CustomerDTO customerDTO , int point);
+
 }

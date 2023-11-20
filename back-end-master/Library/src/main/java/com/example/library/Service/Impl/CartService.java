@@ -25,7 +25,7 @@ public class CartService {
             products.setName(optionalProducts.get().getName());
             products.setPrice(optionalProducts.get().getPrice());
             products.setQuantity(optionalProducts.get().getQuantity());
-
+            products.setImg(optionalProducts.get().getImg());
             boolean productExistsInCart = false;
 
             for (Product_Items productItems : cart) {

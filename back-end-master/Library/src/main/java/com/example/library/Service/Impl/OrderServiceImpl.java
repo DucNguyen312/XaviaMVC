@@ -27,12 +27,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order updateOrder(long id, int total_quantity, double total_price) {
+    public Order updateOrder(long id, int total_quantity, double total_price , int total_point) {
         Optional<Order> optionalOrder = orderRepository.findById(id);
         if(optionalOrder.isPresent()){
             Order order = optionalOrder.get();
             order.setTotal_quantity(total_quantity);
             order.setTotal_price(total_price);
+            order.setTotal_point(total_point);
             orderRepository.save(order);
             return order;
         }

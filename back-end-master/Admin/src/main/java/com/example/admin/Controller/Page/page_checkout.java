@@ -30,7 +30,6 @@ public class page_checkout {
                 return "FAIL";
         }
 
-
         int items = cartService.countItemsInCart();
         model.addAttribute("items" , items);
         return "/user/checkout";

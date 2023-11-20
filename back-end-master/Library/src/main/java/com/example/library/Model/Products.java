@@ -20,6 +20,7 @@ public class Products {
     private int quantity;
     private int sold;
     private String note;
-
+    private int rewardPoints;
+    private String img;
 
 }

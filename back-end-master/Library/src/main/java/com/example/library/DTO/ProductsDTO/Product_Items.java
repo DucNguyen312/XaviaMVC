@@ -12,4 +12,5 @@ public class Product_Items {
     private int quantity;
     private int sold;
     private double total;
+    private String img;
 }

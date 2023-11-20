@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--Css-->
-    <link rel="stylesheet" th:href="@{/cart.css}">
+    <link rel="stylesheet" th:href="@{/payment.css}">
     <title>Trang Sức Xavia</title>
     <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -126,59 +126,42 @@
               </div>
             </nav>
         </header>
+
         <!--Main-->
-        <div class="container">
-            <h2 style="color: white">SHOPPING CART</h2>
-            <table class="table table-dark table-striped">
-                <thead>
-                <tr>
-                    <td>ID</td>
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th class="text-center">Quantity</th>
-                    <th class="text-center">Price</th>
-                    <th class="text-center">Total</th>
-                    <th class="text-center"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="item : ${itemCart}">
-                    <td style="width:5%" class="align-middle"  th:text="${item.id}"></td>
-                    <td style="width:10%">
-                        <img class="img-fluid" th:src="${item.img}">
-                    </td>
-                    <td style="width:35%" class="align-middle" th:text="${item.name}"></td>
-                    <td style="width:0%" class="align-middle text-center" >
-                        <input th:value="${item.sold}" type="number" min="1" th:max="${item.quantity - item.sold + 1}" class="form-control form-control-sm quantity" oninput="updateTotal(this)" style="background-color: #1B1B1B; color: white;">
-                    </td>
-                    <td style="width:20%" class="align-middle text-center price" th:text="${item.price}"></td>
-                    <td style="width:20%" class="align-middle text-center total" th:text="${item.total}" ></td>
-                    <td style="width:10%" class="align-middle text-center" >
-                        <button class="btn btn-danger" onclick="deleteRow(this.parentNode.parentNode)"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="back-to-shop"><a href="/"><i class="fa-solid fa-left-long"></i><span style="color: white">Back to shop</span></a></div>
-            <div class="container">
-                <div class="row" style="color: white">
-                    <div class="col-11 text-end">Quantity:</div>
-                    <div class="col-1 text-start" id = "total-quantity"></div>
-                    <div class="col-11 text-end">Total:</div>
-                    <div class="col-1 text-start" id = "totals"></div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Phần bên trái với ảnh QR -->
+                    <h2 class="text-light">Thanh toán bằng QR</h2>
+                    <img th:src="${imageUrl}" alt="Mã QR" style="width: 80%;">
                 </div>
-            </div>
-            <div class="container mt-2">
-                <div class="row">
-                    <div class="col text-end">
-                        <button class="btn btn-danger" type="submit" onclick="processTableData()"><a th:href="@{/page/checkout}">Thanh toán</a></button>
-                    </div>
+                <div class="col-md-6">
+                    <h2 class="text-light">Thanh toán thủ công</h2>
+                    <form>
+                        <div class="form-group mt-2">
+                            <label class="text-light" for="stk">Số tài khoản:</label>
+                            <input type="text" id="stk" class="form-control" value="6600205733805" disabled>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="text-light" for="tenNgThuhuong">Tên người thụ hưởng:</label>
+                            <input type="text" id="tenNgThuhuong" class="form-control" value="NGUYEN HUU DUC" disabled>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="text-light" for="giaTien">Số tiền chuyển khoản:</label>
+                            <input type="text" id="giaTien" class="form-control" th:value="${AMOUNT}" disabled>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="text-light" for="noiDung">Nội dung chuyển khoản:</label>
+                            <input type="text" id="noiDung" class="form-control" th:value="${DESCRIPTION}" disabled>
+                        </div>
+                        <button class="btn btn-danger mt-4 align-center" type="button" >Tôi đã thanh toán</button>
+                    </form>
                 </div>
             </div>
         </div>
 
-       <!--Footer-->
-    <footer>
+        <!--Footer-->
+        <footer>
         <div class="container-fluid" style="background-color: rgb(0, 0, 0);">
             <div class="container container-phuongcham" style="margin-bottom: 50px;">
                 <div class="container" style="margin:60px 0 20px 0 ;">
@@ -240,87 +223,6 @@
     </footer>
 
     </div>
-    <script>
-        function updateTotal(input) {
-            const value = input.value;
-            if (isNaN(value) || value.trim() === "")
-                input.value = "1";
 
-            const row = input.parentNode.parentNode; // Lấy hàng cha của ô input
-            const quantity = parseInt(input.value, 10);
-            const pricePerItem = parseFloat(row.querySelector(".price").innerText); // Lấy giá trị giá trong hàng
-            const total = quantity * pricePerItem;
-
-            row.querySelector(".total").innerText = total;
-            calculateTotals();
-        }
-
-        function deleteRow(row) {
-            var table = row.parentNode.parentNode;
-            var rowIndex = row.rowIndex;
-            table.deleteRow(rowIndex);
-            calculateTotals();
-        }
-
-        function calculateTotals() {
-            // Lấy danh sách các phần tử có class "quantity" và "price"
-            const quantityElements = document.querySelectorAll('.quantity');
-            const priceElements = document.querySelectorAll('.total');
-
-            // Kiểm tra nếu không có sản phẩm trong bảng
-            if (quantityElements.length === 0 || priceElements.length === 0) {
-                document.getElementById('total-quantity').textContent = '0';
-                document.getElementById('totals').textContent = '0';
-            } else {
-                // Khai báo biến để lưu tổng số lượng và tổng giá tiền
-                let totalQuantity = 0;
-                let totals = 0;
-
-                // Lặp qua các phần tử và tính tổng
-                for (let i = 0; i < quantityElements.length; i++) {
-                    const quantity = parseInt(quantityElements[i].value);
-                    const price = parseFloat(priceElements[i].textContent);
-                    totalQuantity += quantity;
-                    totals += price;
-                }
-
-                // Hiển thị tổng số lượng và tổng giá tiền lên trang
-                document.getElementById('total-quantity').textContent = totalQuantity;
-                document.getElementById('totals').textContent = totals.toFixed(2);
-            }
-        }
-        calculateTotals();
-
-        //Lay du lieu
-        function processTableData() {
-            var tableRows = document.querySelectorAll("table tbody tr");
-            var dataToSend = [];
-
-            tableRows.forEach(function(row) {
-                var id = row.querySelector("td:nth-child(1)").textContent; // Lấy giá trị cột ID
-                var sold = row.querySelector("td:nth-child(4) input.quantity").value; // Lấy giá trị ô input số lượng
-
-                dataToSend.push({ id: id, sold: sold });
-            });
-            sendDataToServer(dataToSend);
-        }
-
-        function sendDataToServer(data) {
-            $.ajax({
-                type: "POST",
-                url: "/page/checkout",
-                data: JSON.stringify(data),
-                contentType: "application/json; charset=utf-8",
-                success: function(response) {
-                    if (response.status === "Loi") {
-
-                    }
-                },
-                error: function(err) {
-                    // Xử lý lỗi (nếu có)
-                }
-            });
-        }
-    </script>
 </body>
 </html>

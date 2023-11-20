@@ -1,8 +1,7 @@
-package com.example.admin.Controller;
+package com.example.admin.Controller.Page;
 
 import com.example.library.DTO.ProductsDTO.Product_Items;
 import com.example.library.Service.Impl.CartService;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/page/cart")
-public class CartController {
+public class page_cart {
     @Autowired
     private CartService cartService;
 
@@ -20,7 +19,6 @@ public class CartController {
     public String Cart(Model model) {
         int items = cartService.countItemsInCart();
         model.addAttribute("items" , items);
-
 
         List<Product_Items> p = cartService.viewCart();
         model.addAttribute("itemCart" , p);
@@ -32,7 +30,6 @@ public class CartController {
         boolean result = cartService.addCart(id);
         if ("buy".equals(action)) {
             if (result) {
-                //CHƯA LÀM !! (Thêm vaào giỏ hàng và đi tới trang thanh toán)
                 model.addAttribute("result_message", "Thêm vào giỏ hàng thành công");
 
             } else {
