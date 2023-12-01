@@ -154,7 +154,10 @@
                             <label class="text-light" for="noiDung">Nội dung chuyển khoản:</label>
                             <input type="text" id="noiDung" class="form-control" th:value="${DESCRIPTION}" disabled>
                         </div>
-                        <button class="btn btn-danger mt-4 align-center" type="button" >Tôi đã thanh toán</button>
+                        <div class="d-flex flex-row-reverse">
+                            <button class="btn btn-danger mt-4" style="margin-left: 10px;" type="button" >Tôi đã thanh toán</button>
+                            <button class="btn btn-success mt-4" type="button" ><a href="/"> Trở về trang chủ </a></button>
+                        </div>
                     </form>
                 </div>
             </div>

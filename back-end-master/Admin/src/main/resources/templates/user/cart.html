@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,8 +37,8 @@
                   <div class="col">
                       <div class="rightuser" style="margin-right: 15%;">
                            <ul style="display: flex; justify-content: right; color: white;">
-                              <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
-                              <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                              <li><a class="user_login" href="/page/user/login"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                              <li><a class="user_register" href="/page/user/register"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
                            </ul>                       
                       </div>
                   </div>
@@ -312,12 +312,10 @@
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 success: function(response) {
-                    if (response.status === "Loi") {
 
-                    }
                 },
                 error: function(err) {
-                    // Xử lý lỗi (nếu có)
+
                 }
             });
         }

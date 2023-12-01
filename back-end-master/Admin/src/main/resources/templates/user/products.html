@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,8 +21,19 @@
     <title>Trang Sức Xavia</title>
     <link rel="icon" type="image/x-icon" href="/image/logotitle.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-</head>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.css">
+
+    <!--Modal -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<script>
+    function convertNumber(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>
 <body>
   <div class="container-fluid" style="padding-left: 0; padding-right : 0">
     <header>
@@ -37,8 +48,8 @@
                   <div class="col">
                       <div class="rightuser" style="margin-right: 15%;">
                            <ul style="display: flex; justify-content: right; color: white;">
-                              <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
-                              <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                              <li><a class="user_login" href="/page/user/login"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                              <li><a class="user_register" href="/page/user/register"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
                            </ul>                       
                       </div>
                   </div>
@@ -72,8 +83,8 @@
                                   <a href=""><i class="ion-bag" style="color: white;font-size: 30px; margin-top: 20px;"></i></a>
                               </div>
                               <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
-                                  <a href="/page/cart/cart.html" style="color: white;"><p>Giỏ hàng</p>
-                                  <p style="color:#e6a2a2;">(0) Sản Phẩm</p>
+                                  <a href="/page/cart" style="color: white;"><p>Giỏ hàng</p>
+                                      <p style="color:#fcf686;"> <span th:text="${items}"></span> Sản Phẩm</p>
                               </div>
                           </div>
                       </div>
@@ -85,42 +96,42 @@
             <div class="container-fluid" style="display: flex; justify-content: center;">
               <ul class="navbar-nav ">
                 <li class="nav-item active">
-                  <a class="nav-link " href="/index.html"><i class="fa-solid fa-house-chimney"></i> Trang Chủ</a>
+                  <a class="nav-link " href="/"><i class="fa-solid fa-house-chimney"></i> Trang Chủ</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link " href="/page/Gioithieu/gioithieu.html">Giới Thiệu</a>
+                  <a class="nav-link " href="/page/gioithieu">Giới Thiệu</a>
                 </li>
                 <li class="nav-item active">
                     <div class="dropdown"> 
-                        <a class="nav-link" href="/page/products/products.html">Sản Phẩm <i class="ion-chevron-down"></i> </a>
+                        <a class="nav-link" href="/page/product/products">Sản Phẩm <i class="ion-chevron-down"></i> </a>
                         <div class="dropdown-content"> 
-                            <a href="/page/product_main/kimcuong/kimcuong.html">Trang Sức Kim Cương</a> 
-                            <a href="/page/product_main/trantinh/trantinh.html">Trần Tình</a> 
-                            <a href="/page/product_main/vinhcuu/vinhcuu.html">Vĩnh Cửu</a> 
-                            <a href="/page/product_main/tamsinh/tamsinh.html">Tam Sinh</a>
+                            <a href="/page/product_main/kimcuong">Trang Sức Kim Cương</a>
+                            <a href="/page/product_main/trantinh">Trần Tình</a>
+                            <a href="/page/product_main/vinhcuu">Vĩnh Cửu</a>
+                            <a href="/page/product_main/tamsinh">Tam Sinh</a>
                         </div>
                     </div>    
                 </li>
                 <li class="nav-item active">
                     <div class="dropdown"> 
-                        <a class="nav-link" href="/page/gift/MomDay/Momday.html">Quà Tặng <i class="ion-chevron-down"></i>   </a>
+                        <a class="nav-link" href="/page/gift/MomDay">Quà Tặng <i class="ion-chevron-down"></i>   </a>
                         <div class="dropdown-content"> 
-                            <a href="/page/gift/MomDay/Momday.html">Ngày của mẹ</a>
-                            <a href="/page/gift/wedding/wedding.html">Kỉ niệm ngày cưới</a> 
-                            <a href="/page/gift/MomDay/Momday.html">Ngày Sinh Nhật</a> 
-                            <a href="/page/gift/wedding/wedding.html">Valentine's Day</a> 
-                            <a href="/page/gift/MomDay/Momday.html">Tốt Nghiệp</a>  
+                            <a href="/page/gift/MomDay">Ngày của mẹ</a>
+                            <a href="/page/gift/wedding">Kỉ niệm ngày cưới</a>
+                            <a href="/page/gift/MomDay">Ngày Sinh Nhật</a>
+                            <a href="/page/gift/wedding">Valentine's Day</a>
+                            <a href="/page/gift/MomDay">Tốt Nghiệp</a>
                         </div>
                     </div>       
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link " href="/page/comment/comment.html">Đánh Giá</a>
+                    <a class="nav-link " href="/page/comment">Đánh Giá</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link " href="/page/blog/blog.html">Blog</a>
+                    <a class="nav-link " href="/page/blog">Blog</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link " href="/page/contact_us/lienhe.html">Liên Hệ</a>
+                    <a class="nav-link " href="/page/contact_us">Liên Hệ</a>
                   </li>
               </ul>
             </div>
@@ -208,94 +219,36 @@
             </div>
             <div class="col-8">
                 <div class="product">
-                    <div class="row">
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/vinhcuu/anh4cccs.jpg" alt="">
+                    <div  class="row flex-wrap">
+                        <div th:each="listProduct : ${listProduct}" class="col-4">
+                            <div class="img-product" >
+                                <img th:src="${listProduct.img}" alt="" style="color: white !important;"
+                                     th:attr="data-product='{&quot;id&quot;:' + '&quot' + ${listProduct.id} + '&quot'
+                                                             + ',&quot;name&quot;:'                  + '&quot' + ${listProduct.name} + '&quot'
+                                                             + ',&quot;price&quot;:'                 + '&quot' + ${listProduct.price} + '&quot'
+                                                             + ',&quot;quantity&quot;:'              + '&quot' + ${listProduct.quantity} + '&quot'
+                                                             + ',&quot;sold&quot;:'                  + '&quot' + ${listProduct.sold} + '&quot'
+                                                             + ',&quot;material&quot;:'              + '&quot' + ${listProduct.material} + '&quot'
+                                                             + ',&quot;note&quot;:'                  + '&quot' + ${listProduct.note} + '&quot'
+                                                             + ',&quot;img&quot;:'                   + '&quot' + ${listProduct.img} + '&quot;}'"
+                                     onclick="openModal(this)">
                             </div>
                             <div class="detail-product">
-                                <div class="name-product"><a href=""> Vĩnh Cửu </a></div>
-                                <div class="price-product">999.999.999đ</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/kimcuong/kimcuong1.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Giọt Lệ Long Linh </a></div>
-                                <div class="price-product">27.999.000đ</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/kimcuong/kimcuong2.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Hoa Tuyết Sơn </a></div>
-                                <div class="price-product">12.999.000đ</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/trantinh/product-6.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Bầu Trời Đầy Sao</a></div>
-                                <div class="price-product">1.999.000đ</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/trantinh/product-16.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Cung Linh Vân Mộng</a></div>
-                                <div class="price-product">899.000đ</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/trantinh/product-18.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Khúc Trần Tình</a></div>
-                                <div class="price-product">1.999.000đ</div>
+                                <div class="name-product"><a style="color: white !important;"
+                                                             th:attr="data-product='{&quot;id&quot;:' + '&quot' + ${listProduct.id} + '&quot'
+                                                             + ',&quot;name&quot;:'                  + '&quot' + ${listProduct.name} + '&quot'
+                                                             + ',&quot;price&quot;:'                 + '&quot' + ${listProduct.price} + '&quot'
+                                                             + ',&quot;quantity&quot;:'              + '&quot' + ${listProduct.quantity} + '&quot'
+                                                             + ',&quot;sold&quot;:'                  + '&quot' + ${listProduct.sold} + '&quot'
+                                                             + ',&quot;material&quot;:'              + '&quot' + ${listProduct.material} + '&quot'
+                                                             + ',&quot;note&quot;:'                  + '&quot' + ${listProduct.note} + '&quot'
+                                                             + ',&quot;img&quot;:'                   + '&quot' + ${listProduct.img} + '&quot;}'"
+                                                             onclick="openModal(this)"
+                                                             th:text="${listProduct.name}"></a></div>
+                                <p class="price-product" th:text="${listProduct.price} + 'đ'"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/tamsinh/product-1.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Tam Sinh Lưu Hoa</a></div>
-                                <div class="price-product">  8.888.888đ</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/trantinh/product-10.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Ma Đạo Tổ Sư </a></div>
-                                <div class="price-product">9.999.000đ</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="img-product">
-                                <img src="/image/tamsinh/product-16.jpg" alt="">
-                            </div>
-                            <div class="detail-product">
-                                <div class="name-product"><a href=""> Lục Lạc Tú Cầu</a></div>
-                                <div class="price-product">1.999.000đ</div>
-                            </div>
-                        </div>
-                    </div>
-                
                 </div>
             </div>          
         </div> 
@@ -496,7 +449,6 @@
             </div>
         </div>
     </div>
-
     <!--Set Nhẫn Cưới-->
     <div class="container" style="margin-top:50px ;">
         <div id="wrapper">
@@ -586,7 +538,7 @@
             </div>
         </div>
     </div>
-<!--Đá màu -->
+    <!--Đá màu -->
     <div class="container" style="margin-top:60px ;">
     <div id="wrapper">
         <div class="headline">   
@@ -803,17 +755,17 @@
                     <div class="col">
                         <ul class="content-footer">
                             <li class="title-content-footer">Liên Kết Nhanh</li>
-                            <a href="/index.html"><li>> Trang chủ</li></a> 
-                            <a href="/page/products/products.html"><li>> Sản phẩm</li></a> 
-                            <a href="/page/blog/blog.html"><li>> Blog</li></a> 
+                            <a href="/"><li>> Trang chủ</li></a>
+                            <a href="/page/product/products"><li>> Sản phẩm</li></a>
+                            <a href="/page/blog"><li>> Blog</li></a>
                         </ul>
                     </div>
                     <div class="col">
                         <ul class="content-footer-last" style="list-style-type: none;">
                             <li class="title-content-footer">Chủ đề nổi bật</li>
-                            <a href="/page/product_main/trantinh/trantinh.html"><li>> Trần Tình  </li></a>
-                            <a href="/page/product_main/vinhcuu/vinhcuu.html"><li>> Vĩnh Cửu </li></a>
-                            <a href="/page/product_main/tamsinh/tamsinh.html"><li>> Tam Sinh </li></a>
+                            <a href="/page/product_main/trantinh"><li>> Trần Tình  </li></a>
+                            <a href="/page/product_main/vinhcuu"><li>> Vĩnh Cửu </li></a>
+                            <a href="/page/product_main/tamsinh"><li>> Tam Sinh </li></a>
                         </ul>
                     </div>
                 </div>
@@ -830,6 +782,96 @@
             </div>
         </div>       
     </footer>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header" style="border: none">
+                  <h4 class="modal-title">Trang sức Xavia</h4>
+                  <button style="color: white" type="button" class="btn" onclick="closeModal()">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-3">
+                              <img class="mb-3" id="product_img" src="/image/spchinh/da4.png" alt="">
+                              <form id="form_cart" method="get">
+                                  <button class="btn btn-buy" type="submit" name="action" value="buy" style="margin-left: 20px"> Mua Ngay</button>
+                                  <button class="btn btn-cart" type="submit" name="action" value="cart"><i class="fa-brands fa-opencart"></i></button>
+                              </form>
+                          </div>
+                          <div class="col-6">
+                              <h5 id="product_name" class="text-bold">Bầu trời đầy sao</h5>
+                              <p id="product_id">Mã sản phẩm: 9</p>
+                              <p>Thương hiệu: Xavia</p>
+                              <p id="product_price" style="color: rgba(255, 0, 128, 0.789);">99999999đ</p>
+                              <p>Chất liệu:
+                                  <span id="product_material">Vàng trắng 18k hoặc bạc sterling 925</span>
+                              </p>
+                              <p>Trọng lượng : 120g</p>
+                              <p>Màu sắc : Vàng</p>
+                              <p>Loại sản phẩm : Nhẫn</p>
+                              <p>Mô tả:
+                                  <span id="product_note"> Sự lựa chọn này có thể đại diện cho sự bền vững và vĩnh cửu. Có thể đây là một chiếc vòng cổ, vòng đeo tay hoặc một chiếc nhẫn được thiết kế với họa tiết mang đậm tính biểu tượng, tượng trưng cho sự vững vàng, bền bỉ. </span>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer" style="border: none">
+
+              </div>
+          </div>
+        </div>
+      </div>
 </div>
+  <!--Thông báo -->
+  <div th:attr="data-result-message=${result_message}"></div>
+  <script th:inline="javascript">
+      var message = document.querySelector('[data-result-message]').getAttribute('data-result-message');
+      if (message) {
+          alert(message);
+      }
+
+
+
+  </script>
+
+  <script>
+
+      function openModal(element) {
+          var productData = element.getAttribute("data-product");
+
+          try {
+              var product = JSON.parse(productData);
+              var price = product.price;
+              price = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+              document.getElementById("form_cart").action = "/page/cart/add_product_carts/" + product.id;
+
+              $('#myModal').modal('show');
+              document.getElementById("product_img").src = product.img;
+              document.getElementById("product_name").innerHTML =product.name;
+              document.getElementById("product_id").innerText ='Mã sản phẩm: ' + product.id;
+              document.getElementById("product_price").innerHTML ='Giá: ' +price + 'đ';
+              document.getElementById("product_material").innerHTML = product.material;
+              document.getElementById("product_note").innerHTML = product.note;
+
+          } catch (error) {
+              console.error("Lỗi khi parse JSON:", error);
+          }
+      }
+
+      function closeModal(){
+          $('#myModal').modal('hide');
+      }
+
+  </script>
 </body>
 </html>

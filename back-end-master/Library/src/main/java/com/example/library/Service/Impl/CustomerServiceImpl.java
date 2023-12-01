@@ -28,6 +28,8 @@ public class CustomerServiceImpl implements CustomerService {
         }
         else {
             Customer customer = customerRepository.findByNumberPhone(customerDTO.getNumberPhone());
+            customer.setNote(customer.getNote());
+            customer.setAddress(customerDTO.getAddress());
             customer.setAccumulatedPoints(customer.getAccumulatedPoints() +  point);
             customerRepository.save(customer);
             return customer;

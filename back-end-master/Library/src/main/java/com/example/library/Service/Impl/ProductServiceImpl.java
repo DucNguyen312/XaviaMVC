@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,6 +15,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+
     @Override
     public Products getProductByID(Long id) {
         Optional<Products> products = productRepository.findById(id);
@@ -25,5 +28,8 @@ public class ProductServiceImpl implements ProductService {
             return null;
     }
 
-
+    @Override
+    public List<Products> getListProduct() {
+        return productRepository.listProducts();
+    }
 }

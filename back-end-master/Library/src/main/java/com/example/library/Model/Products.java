@@ -14,13 +14,12 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private long id;
-
     private String name;
     private int price;
     private int quantity;
     private int sold;
+    private String material;
     private String note;
     private int rewardPoints;
     private String img;
-
 }

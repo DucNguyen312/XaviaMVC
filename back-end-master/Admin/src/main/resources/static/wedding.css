@@ -312,7 +312,7 @@ li{
 .btn-about{
     border: 2px solid #ed3952;
     color: #ed3952;;
-    border-radius: 1 0px;
+    border-radius: 10px;
 }
 .btn-about:hover{
     color: white;
