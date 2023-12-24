@@ -151,7 +151,7 @@
                     <div class="view">
                          <span class="btn fas fa-th px-md-2 px-1"></span> 
                          <span class="btn fas fa-list-ul"></span>
-                         <span class=""> 428 Products</span> 
+                         <span class="" th:text="${quantityProduct} + ' sản phẩm'"></span>
                     </div>
                 </div>
             </div>
@@ -245,7 +245,7 @@
                                                              + ',&quot;img&quot;:'                   + '&quot' + ${listProduct.img} + '&quot;}'"
                                                              onclick="openModal(this)"
                                                              th:text="${listProduct.name}"></a></div>
-                                <p class="price-product" th:text="${listProduct.price} + 'đ'"></p>
+                                <p class="price-product" th:text="${listProduct.price}"></p>
                             </div>
                         </div>
                     </div>
@@ -825,7 +825,6 @@
 
               <!-- Modal footer -->
               <div class="modal-footer" style="border: none">
-
               </div>
           </div>
         </div>
@@ -838,9 +837,6 @@
       if (message) {
           alert(message);
       }
-
-
-
   </script>
 
   <script>
@@ -859,7 +855,7 @@
               document.getElementById("product_img").src = product.img;
               document.getElementById("product_name").innerHTML =product.name;
               document.getElementById("product_id").innerText ='Mã sản phẩm: ' + product.id;
-              document.getElementById("product_price").innerHTML ='Giá: ' +price + 'đ';
+              document.getElementById("product_price").innerHTML ='Giá: ' +price;
               document.getElementById("product_material").innerHTML = product.material;
               document.getElementById("product_note").innerHTML = product.note;
 

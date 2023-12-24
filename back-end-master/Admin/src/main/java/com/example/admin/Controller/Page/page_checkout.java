@@ -25,8 +25,8 @@ public class page_checkout {
             long id = element.getAsJsonObject().get("id").getAsLong();
             int sold = element.getAsJsonObject().get("sold").getAsInt();
 
-            String result_checkot = cartService.Checkout(id , sold);
-            if (result_checkot != null)
+            String result_checkout = cartService.Checkout(id , sold);
+            if (result_checkout != null)
                 return "FAIL";
         }
 

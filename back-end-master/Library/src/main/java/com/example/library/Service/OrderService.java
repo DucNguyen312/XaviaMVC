@@ -5,5 +5,6 @@ import com.example.library.Model.Order;
 
 public interface OrderService {
     Order addNewOrder(Customer customer);
-    Order updateOrder(long id , int total_quantity , double total_price , int toltal_point);
+    Order updateOrder(long id , int total_quantity , double total_price , int toltal_point , String paymentMethod, int prePay);
+    Order updateOrderCheck(long id);
 }

@@ -63,6 +63,11 @@ public class CartService {
         return cart;
     }
 
+    public void Clear(){
+        cart.clear();
+    }
+
+
     public void ClearList(){
         cart.clear();
         isCartCleared = true;

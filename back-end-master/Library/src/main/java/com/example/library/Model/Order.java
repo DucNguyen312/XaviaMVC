@@ -20,7 +20,8 @@ public class Order {
     private int total_quantity;
     private double total_price;
     private int total_point;
-
+    private String paymentMethod;
+    private int prePay;
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;

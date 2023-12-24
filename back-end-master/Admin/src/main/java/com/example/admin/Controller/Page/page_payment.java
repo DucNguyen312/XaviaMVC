@@ -6,12 +6,9 @@ import com.example.library.DTO.ProductsDTO.Product_Items;
 import com.example.library.Model.Customer;
 import com.example.library.Model.Order;
 import com.example.library.Model.Products;
-import com.example.library.Service.CustomerService;
+import com.example.library.Service.*;
 import com.example.library.Service.Impl.CartService;
 
-import com.example.library.Service.OrderDetailService;
-import com.example.library.Service.OrderService;
-import com.example.library.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/page/payment")
 public class page_payment {
     @Autowired
     private CartService cartService;
@@ -32,8 +30,13 @@ public class page_payment {
     private OrderDetailService orderDetailService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private MailService mailService;
 
-    @RequestMapping(value = "/page/payment" , method = RequestMethod.POST)
+    public Customer customerMail;
+    public Order orderMail;
+
+    @PostMapping("")
     public ModelAndView save(@ModelAttribute CustomerDTO customerDTO, Model model){
         Customer customer = customerService.addNewCustomer(customerDTO , 0);
         Order order = orderService.addNewOrder(customer);
@@ -48,10 +51,12 @@ public class page_payment {
             total_quantity += p.getSold();
             total_price += p.getTotal();
             total_point += product_point.getRewardPoints()*p.getSold();
-
         }
-        orderService.updateOrder(order.getId() , total_quantity , total_price , total_point);
+        orderService.updateOrder(order.getId() , total_quantity , total_price , total_point , customerDTO.getPaymentMethod() , customerDTO.getPrePay());
         customerService.addNewCustomer(customerDTO , total_point);
+
+        customerMail = customer;
+        orderMail = order;
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/user/payment");
@@ -60,8 +65,10 @@ public class page_payment {
         int items = cartService.countItemsInCart();
         model.addAttribute("items" , items);
 
+        double total = total_price*((double) customerDTO.getPrePay() /100);
+
         // QR
-        String imageUrl = "https://img.vietqr.io/image/Agribank-6600205733805-compact2.jpg?amount="+total_price+"&addInfo=ID "+order.getId()+"&accountName=NGUYEN HUU DUC";
+        String imageUrl = "https://img.vietqr.io/image/Agribank-6600205733805-compact2.jpg?amount="+ total+"&addInfo=ID "+order.getId()+"&accountName=NGUYEN HUU DUC";
         model.addAttribute("imageUrl", imageUrl);
 
         //Thanh toán
@@ -71,12 +78,29 @@ public class page_payment {
         model.addAttribute("DESCRIPTION", DESCRIPTION);
         return modelAndView;
     }
-
-    @RequestMapping(value = "/page/payment")
+    @GetMapping("")
     public String home(Model model){
         //Thong tin gio hang
         int items = cartService.countItemsInCart();
         model.addAttribute("items" , items);
         return "/user/payment";
     }
+
+    @GetMapping("/submit")
+    public String paymentSubmit(Model model) {
+        //Gửi mail
+        mailService.sendMail(customerMail,orderMail,cartService.viewCart());
+        //Update trạng thái order
+        orderService.updateOrderCheck(orderMail.getId());
+        //
+        int items = cartService.countItemsInCart();
+        model.addAttribute("items" , items);
+        //Xóa giỏ hàng
+        cartService.Clear();
+
+        String notification = "Bạn vui lòng kiểm tra email để theo dõi đơn hàng";
+        model.addAttribute("result_message", notification);
+        return "index";
+    }
+
 }

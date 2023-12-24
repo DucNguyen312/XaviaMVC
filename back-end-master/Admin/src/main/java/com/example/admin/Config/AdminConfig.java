@@ -48,13 +48,16 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.csrf().disable()
             .authorizeRequests()
                 .antMatchers(HttpMethod.POST , "/page/**").permitAll()
                 .antMatchers(HttpMethod.GET , "/page/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/page/**").permitAll()
                 .antMatchers(HttpMethod.DELETE , "/page/**").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET,"/admin/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST,"/admin/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/admin/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/admin/**").hasAuthority("ADMIN")
                 .and()
             .formLogin()
                 .loginPage("/admin/login")

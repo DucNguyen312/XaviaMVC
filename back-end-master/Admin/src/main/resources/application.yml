@@ -1,0 +1,16 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    username: xaviatgu@gmail.com
+    password: qlwbbwepdekqiogc
+    port: 587
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+
+
+
+

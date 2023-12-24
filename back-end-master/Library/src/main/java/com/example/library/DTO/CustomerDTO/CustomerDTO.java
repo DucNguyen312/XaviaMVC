@@ -12,5 +12,7 @@ public class CustomerDTO {
     private String numberPhone;
     private String address;
     private String note;
+    private String paymentMethod;
+    private int prePay;
 
 }

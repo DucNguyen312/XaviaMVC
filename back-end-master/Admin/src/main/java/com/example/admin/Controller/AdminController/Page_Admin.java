@@ -1,4 +1,4 @@
-package com.example.admin.Controller.Page;
+package com.example.admin.Controller.AdminController;
 
 import com.example.admin.Config.CustomUserConfigService;
 import com.example.library.Model.Users;

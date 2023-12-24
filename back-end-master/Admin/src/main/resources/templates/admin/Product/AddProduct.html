@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/admin/share/head">
+    <style>
+
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+    <!--Header -->
+    <header th:replace="/admin/share/header"></header>
+    <!--Control Panel - Menu) -->
+    <aside th:replace="/admin/share/menu"></aside>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1 class="text-center">
+                Thêm sản phẩm
+            </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container">
+                <form id="myForm" action="/admin/product/add-product" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col" style="margin-bottom: 20px">
+                            <label>Tên sản phẩm</label>
+                            <input type="text" class="form-control"  placeholder="Ex: Hoa hồng" name="name" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-bottom: 20px">
+                            <label>Giá sản phẩm</label>
+                            <input type="number" class="form-control" min="0" placeholder="Ex: 10000" name="price" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-bottom: 20px">
+                            <label>Số lượng</label>
+                            <input type="number" class="form-control" min="1" placeholder="Ex: 1" name="quantity" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-bottom: 20px">
+                            <label>Chất liệu</label>
+                            <input type="text" class="form-control" placeholder="Ex: Kim cương ..." name="material" required>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col" style="margin-bottom: 20px">
+                            <label>Mô tả sản phẩm</label>
+                            <textarea class="form-control" rows="5" name="note" ></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-bottom: 20px">
+                            <label>Điểm thưởng</label>
+                            <input type="number" class="form-control" min="0" placeholder="Ex: 100" name="rewardPoints" required>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 30px">
+                        <label>Ảnh sản phẩm</label>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="customFile" name="file">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn btn-danger" id="submitButton" name="submit" value="Submit">Xác Nhận</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer th:replace="/admin/share/footer"></footer>
+</div>
+<div th:replace="/admin/share/Jquery"></div>
+<div th:attr="data-result-message=${result_message}"></div>
+<script th:inline="javascript">
+    var message = document.querySelector('[data-result-message]').getAttribute('data-result-message');
+    if (message) {
+        alert(message);
+    }
+</script>
+</body>
+</html>

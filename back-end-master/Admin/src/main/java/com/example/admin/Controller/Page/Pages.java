@@ -15,7 +15,6 @@ public class Pages {
     public String register(){
         return "user/register";
     }
-
     @GetMapping("/product_main/kimcuong")
     public String products_KC(){
         return "user/kimcuong";
