@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+
+</style>
+<head th:replace="/admin/share/head">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+    <!--Header -->
+    <header th:replace="/admin/share/header"></header>
+    <!--Control Panel - Menu) -->
+    <aside th:replace="/admin/share/menu"></aside>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1 class="text-center">
+                Danh sách hóa đơn
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <footer th:replace="/admin/share/footer"></footer>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="border: none">
+                    <h4 class="modal-title text-center">Chỉnh sửa thông tin sản phẩm</h4>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" style="margin-left: 50px">
+                    <div class="container">
+                        <form id="myForm" action="" method="" >
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer" style="border: none">
+                    <div class="d-flex flex-row-reverse">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="/admin/share/Jquery"></div>
+<div th:attr="data-result-message=${result_message}"></div>
+<script th:inline="javascript">
+    // Hiển thị thông báo
+    var message = document.querySelector('[data-result-message]').getAttribute('data-result-message');
+    if (message) {
+        alert(message);
+    }
+
+    //Nút xóa sản phẩm
+    function deleteProduct(button){
+        var productId = button.getAttribute("data-product-id");
+        var userConfirmed = confirm("Bạn có muốn xóa sản phẩm này không ?");
+        if (userConfirmed) {
+            deleteP(productId);
+        }
+    }
+    //Hàm xử lý hành động xóa
+    async function deleteP(productId) {
+        const response = await fetch("/admin/product/delete/" + productId, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (response.ok) {
+            alert("Xóa sản phẩm thành công");
+            location.reload();
+        }
+    }
+
+    //Mở modal
+    function openModal(element) {
+        var productData = element.getAttribute("data-product");
+        try {
+            var product = JSON.parse(productData);
+            console.log(product)
+            document.getElementById("id").value = product.id;
+            document.getElementById("name").value = product.name;
+            document.getElementById("price").value = chuyenDoiChuoi(product.price);
+            document.getElementById("quantity").value = product.quantity;
+            document.getElementById("sold").value = product.sold;
+            document.getElementById("material").value = product.material;
+            document.getElementById("note").value = product.note;
+            document.getElementById("point").value = product.rewardPoints;
+
+            $('#myModal').modal('show');
+
+        } catch (error) {
+            console.error("Lỗi khi parse JSON:", error);
+        }
+
+    }
+    function closeModal(){
+        $('#myModal').modal('hide');
+        window.location.href = 'http://localhost:8080//admin/product/list-product';
+    }
+
+    function chuyenDoiChuoi(chuoi) {
+        var buoc1 = chuoi.replace(/\./g, '');
+        var buoc2 = buoc1.replace('đ', '');
+        return buoc2;
+    }
+
+
+</script>
+</body>
+</html>

@@ -75,7 +75,6 @@
 		</dependency>
 
 
-
 		<!--Modelue-->
 		<dependency>
 			<groupId>com.example.library</groupId>

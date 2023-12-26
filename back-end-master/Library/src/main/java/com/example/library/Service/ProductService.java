@@ -12,4 +12,7 @@ public interface ProductService {
     List<ProductView> getListProductView();
     Products newProduct(ProductDTO productDTO);
     String deleteProduct(long id);
+    Products updateProduct(long id , ProductDTO productDTO);
+
+    String updateImg(long id , ProductDTO productDTO);
 }

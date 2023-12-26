@@ -70,7 +70,11 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
                 .logoutSuccessUrl("/admin/login")
-                .permitAll();
+                .permitAll()
+                .and()
+            .exceptionHandling()
+                .accessDeniedPage("/error");
+
     }
 
 

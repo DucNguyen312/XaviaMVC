@@ -47,7 +47,6 @@ public class ProductServiceImpl implements ProductService {
         products.setMaterial(productDTO.getMaterial());
         products.setRewardPoints(productDTO.getRewardPoints());
         products.setNote(productDTO.getNote());
-        products.setImg(productDTO.getImg());
         return productRepository.save(products);
     }
 
@@ -60,6 +59,35 @@ public class ProductServiceImpl implements ProductService {
             return "Delete product success";
         }
         return "Delete product fail";
+    }
+
+    @Override
+    public Products updateProduct(long id ,ProductDTO productDTO) {
+        Optional<Products> optionalProducts = productRepository.findById(id);
+        if (optionalProducts.isPresent()){
+            Products products = optionalProducts.get();
+            products.setName(productDTO.getName());
+            products.setPrice(productDTO.getPrice());
+            products.setQuantity(productDTO.getQuantity());
+            products.setSold(productDTO.getSold());
+            products.setMaterial(productDTO.getMaterial());
+            products.setRewardPoints(productDTO.getRewardPoints());
+            products.setNote(productDTO.getNote());
+            return productRepository.save(products);
+        }
+        return null;
+    }
+
+    @Override
+    public String updateImg(long id, ProductDTO productDTO) {
+        Optional<Products> optionalProducts = productRepository.findById(id);
+        if(optionalProducts.isPresent()){
+            Products products = optionalProducts.get();
+            products.setImg(productDTO.getImg());
+            productRepository.save(products);
+            return "Update image success";
+        }
+        return null;
     }
 
     @Override
