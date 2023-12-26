@@ -36,8 +36,6 @@ public class ProductController {
     private UserService userService;
     @Autowired
     private ProductService productService;
-    @Autowired
-    private ProductRepository productRepository;
 
     private static final String UPLOAD_FOLDER = "C:\\Users\\PC\\Documents\\Xavia BE\\back-end-master\\Admin\\src\\main\\resources\\static\\image\\products";
 

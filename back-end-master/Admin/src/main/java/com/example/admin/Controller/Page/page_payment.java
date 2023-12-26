@@ -52,7 +52,7 @@ public class page_payment {
             total_price += p.getTotal();
             total_point += product_point.getRewardPoints()*p.getSold();
         }
-        orderService.updateOrder(order.getId() , total_quantity , total_price , total_point , customerDTO.getPaymentMethod() , customerDTO.getPrePay());
+        orderService.updateOrder(order.getId() , total_quantity , total_price , total_point , customerDTO.getPaymentMethod() , customerDTO.getPrePay() , customerDTO.getNote());
         customerService.addNewCustomer(customerDTO , total_point);
 
         customerMail = customer;

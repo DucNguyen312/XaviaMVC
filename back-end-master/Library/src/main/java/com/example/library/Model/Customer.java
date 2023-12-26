@@ -1,5 +1,6 @@
 package com.example.library.Model;
 
+import com.example.library.DTO.CustomerDTO.CustomerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ public class Customer {
     private String email;
     private String numberPhone;
     private String address;
-    private String note;
     private int accumulatedPoints;
+
+    @Enumerated(EnumType.STRING)
+    private CustomerStatus customerStatus;
 }

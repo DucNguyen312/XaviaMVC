@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order updateOrder(long id, int total_quantity, double total_price , int total_point , String paymentMethod , int prePay) {
+    public Order updateOrder(long id, int total_quantity, double total_price , int total_point , String paymentMethod , int prePay , String note) {
         Optional<Order> optionalOrder = orderRepository.findById(id);
         if(optionalOrder.isPresent()){
             Order order = optionalOrder.get();
@@ -35,6 +35,7 @@ public class OrderServiceImpl implements OrderService {
             order.setTotal_point(total_point);
             order.setPaymentMethod(paymentMethod);
             order.setPrePay(prePay);
+            order.setNote(note);
             orderRepository.save(order);
             return order;
         }

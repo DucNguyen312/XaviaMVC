@@ -22,6 +22,8 @@ public class Order {
     private int total_point;
     private String paymentMethod;
     private int prePay;
+    private String note;
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;

@@ -48,7 +48,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="listProduct : ${listProduct}">
-                            <td th:text="${listProduct.id}">1</td>
+                            <td th:text="${listProduct.id}"></td>
                             <td><img class="img-fluid" th:src="${listProduct.img}"></td>
                             <td th:text="${listProduct.name}"></td>
                             <td th:text="${listProduct.quantity}"></td>
