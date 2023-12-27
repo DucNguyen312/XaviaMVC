@@ -23,9 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <script>
-  function Thongbao(){
-    alert("Đăng Nhập Thành Công");
-  }
+
 </script>
 <body>
   <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
@@ -41,8 +39,8 @@
                 <div class="col">
                     <div class="rightuser" style="margin-right: 15%;">
                          <ul style="display: flex; justify-content: right; color: white;">
-                            <li><a class="user_login" href="/page/user/login.html"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
-                            <li><a class="user_register" href="/page/user/register.html"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
+                            <li><a class="user_login" href="/page/user/login"><i class="ion-android-exit"></i> Đăng Nhập</a></li>
+                            <li><a class="user_register" href="/page/user/register"><i class="ion-ios-personadd-outline"></i> Đăng Kí</a></li>
                          </ul>                       
                     </div>
                 </div>
@@ -76,7 +74,7 @@
                                 <a href=""><i class="ion-bag" style="color: white;font-size: 30px; margin-top: 20px;"></i></a>
                             </div>
                             <div class="content-cart" style="color: white; margin-top: 10px; line-height: 10px; margin-left: 10px;">
-                                <a href="/page/cart/cart.html" style="color: white;"><p>Giỏ hàng</p>
+                                <a href="/page/cart" style="color: white;"><p>Giỏ hàng</p>
                                 <p style="color:rgb(239, 161, 169);">(0) Sản Phẩm</p>
                             </div>
                         </div>
@@ -89,11 +87,11 @@
             <div class="container-fluid" style="display: flex; justify-content: center; border-bottom: 1px solid;">
               <ul class="navbar-nav ">
                 <li class="nav-item active">
-                  <a class="nav-link " href="/index.html"><i class="ion-home"></i> Trang Chủ</a>
+                  <a class="nav-link " href="/"><i class="ion-home"></i> Trang Chủ</a>
                 </li>
                 <ul class="navbar-nav ">
                   <li class="nav-item active">
-                    <a class="nav-link " href="/page/Gioithieu/gioithieu.html">Giới Thiệu</a>
+                    <a class="nav-link " href="/page/gioithieu">Giới Thiệu</a>
                   </li>
                 <li class="nav-item active">
                     <div class="dropdown"> 
@@ -188,12 +186,18 @@
                 <div class="card2 card border-0 px-4 px-sm-5 py-5">
                     <h3 class="mb-1" style="color: white;">Sign in to Xavia</h3>
                     <p class="mb-4 text-sm" style="color: white;" >Login and start shopping now !</p>
-                    <div class="row px-3"> <label class="mb-0">
-                            <h6 class="mb-0 text-sm" style="color: white;" >Email Address / username</h6>
-                        </label> <input type="text" name="email" placeholder="KimNgan@email.com"> </div>
-                    <div class="row px-3"> <label class="mb-0">
-                            <h6 class="mb-0 text-sm" style="color: white;">Password</h6>
-                        </label> <input type="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"> </div>
+                    <form id="myForm" th:action="@{/admin/do-login}" method="POST">
+                        <div class="row px-3">
+                            <label class="mb-0">
+                                <h6 class="mb-0 text-sm" style="color: white;" >Email Address / username</h6>
+                            </label>
+                            <input type="text" name="username" placeholder="KimNgan@email.com"> </div>
+                        <div class="row px-3">
+                            <label class="mb-0">
+                                <h6 class="mb-0 text-sm" style="color: white;">Password</h6>
+                            </label>
+                            <input type="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"> </div>
+                    </form>
                     <div class="row">
                       <div class="col-6"><input type="checkbox" name="" id="" style="width: auto;"><small style="color: white;"> Remember Me</small></div>
                       <div class="col-6">
@@ -201,7 +205,7 @@
                       </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="col-md-6"> <button class="btn btn-blue text-center mb-1 py-2" onclick="Thongbao()" style="color: white;">Create Account</button> </div>
+                        <div class="col-md-6"> <button class="btn btn-blue text-center mb-1 py-2" onclick="submitForm()" style="color: white;">Login</button> </div>
                     </div>
                     <div class="row px-3 mb-4">
                         <div class="line"></div> <small class="text-muted or text-center">OR</small>
@@ -225,5 +229,11 @@
 
 
   </div>
+  <script>
+      function submitForm() {
+          var form = document.getElementById("myForm");
+          form.submit();
+      }
+  </script>
 </body>
 </html>

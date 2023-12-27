@@ -27,6 +27,8 @@ public class Page_Admin {
         return "admin/index";
     }
 
-    @GetMapping("/admin/login")
-    public String pageLogin() {return "admin/login";}
+    @GetMapping("/user/login")
+    public String login(){
+        return "user/login";
+    }
 }

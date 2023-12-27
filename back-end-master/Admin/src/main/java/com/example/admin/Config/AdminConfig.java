@@ -60,7 +60,7 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE,"/admin/**").hasAuthority("ADMIN")
                 .and()
             .formLogin()
-                .loginPage("/admin/login")
+                .loginPage("/user/login")
                 .loginProcessingUrl("/admin/do-login")
                 .defaultSuccessUrl("/admin/")
                 .permitAll()

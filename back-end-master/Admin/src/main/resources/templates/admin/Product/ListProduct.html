@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button class="btn btn-warning" type="submit" >Cập nhật</button>
+                                <button class="btn btn-warning" onclick="submitForm()" >Cập nhật</button>
                                 <button class="btn btn-about" onclick="closeModal()" >Hủy</button>
                             </div>
                         </form>
@@ -223,6 +223,11 @@
         return buoc2;
     }
 
+    function submitForm() {
+        var form = document.getElementById("myForm");
+        form.submit();
+        alert("Cập nhật sản phẩm thành công")
+    }
 
 </script>
 </body>

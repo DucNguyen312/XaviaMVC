@@ -1,5 +1,6 @@
 package com.example.library.Service.Impl;
 
+import com.example.library.DTO.CustomerDTO.SendMailDTO;
 import com.example.library.DTO.ProductsDTO.Product_Items;
 import com.example.library.Model.Customer;
 import com.example.library.Model.Order;
@@ -24,6 +25,8 @@ public class MailServiceImpl implements MailService {
     private JavaMailSender javaMailSender;
     @Autowired
     private DateTimeService dateTimeService;
+
+
     @Override
     public String sendMail(Customer customer , Order order , List<Product_Items> product_items) {
         try {
@@ -56,6 +59,7 @@ public class MailServiceImpl implements MailService {
                         + "Sản phẩm đã đặt: \n"
                         + products +"\n"
                         +"Tổng cộng: " + total + "\n"
+                        +"Trạng thái đơn hàng: Đang chờ duyệt"+ "\n"
                         +"Địa chỉ giao hàng: " + customer.getAddress() + "\n\n"
                         +"Chúng tôi sẽ thông báo cho bạn khi đơn hàng của bạn đã được gửi đi. Nếu có bất kỳ câu hỏi hoặc yêu cầu nào, vui lòng liên hệ chúng tôi tại xaviatgu@gmail.com hoặc số điện thoại 0562879967.\n\n"
                         +"Chúng tôi rất hân hạnh được phục vụ bạn và mong bạn có trải nghiệm mua sắm thú vị tại Xavia.\n"
@@ -64,6 +68,26 @@ public class MailServiceImpl implements MailService {
 
 
             mimeMessageHelper.setText(body);
+
+            javaMailSender.send(mimeMessage);
+
+            return "mail send";
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public String send(SendMailDTO sendMailDTO) {
+        try {
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+
+            mimeMessageHelper.setFrom(fromEmail);
+            mimeMessageHelper.setTo(sendMailDTO.getToEmail());
+            mimeMessageHelper.setSubject(sendMailDTO.getSubject());
+            mimeMessageHelper.setText(sendMailDTO.getBody());
 
             javaMailSender.send(mimeMessage);
 

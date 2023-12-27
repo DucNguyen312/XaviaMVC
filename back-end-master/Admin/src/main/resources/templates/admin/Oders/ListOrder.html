@@ -27,64 +27,117 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="container">
+            <div class="container-fluid-main">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
+                            <th>Khách hàng</th>
+                            <th>Ngày đặt</th>
+                            <th>Số lượng</th>
+                            <th>Tổng tiền</th>
+                            <th>Tích điểm</th>
+                            <th>Phương thức</th>
+                            <th>Trả trước(%)</th>
+                            <th>Ghi chú</th>
+                            <th>Trạng thái</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
+                        <tr th:each="order : ${orderList}">
+                            <td th:text="${order.id}"></td>
+                            <td th:text="${order.name}"></td>
+                            <td th:text="${order.orderDate}"></td>
+                            <td th:text="${order.totalQuantity}"></td>
+                            <td th:text="${order.totalPrice}"></td>
+                            <td th:text="${order.totalPoint}"></td>
+                            <td th:text="${order.paymentMethod}"></td>
+                            <td th:text="${order.prePay}"></td>
+                            <td th:text="${order.note}"></td>
+                            <td th:text="${order.status}"></td>
+                            <td>
+                                <button class="btn btn-success"><i class="fa-solid fa-check" style="color: #ffffff;"></i></button>
+                                <button id="info" class="btn btn-warning" th:attr="data-detail=${#strings.listJoin(order.orderDetailProducts, ',')}"  onclick="tool(this)"><i class="fa-solid fa-info" style="color: #ffffff;"></i></button>
+                                <button class="btn btn-info"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i></button>
+                                <button class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
+                            </td>
                         </tr>
+                    </tbody>
+                </table>
+                <table id="dataTable" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Unit Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
                     </tbody>
                 </table>
             </div>
         </section>
     </div>
     <footer th:replace="/admin/share/footer"></footer>
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header" style="border: none">
-                    <h4 class="modal-title text-center">Chỉnh sửa thông tin sản phẩm</h4>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body" style="margin-left: 50px">
-                    <div class="container">
-                        <form id="myForm" action="" method="" >
-
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer" style="border: none">
-                    <div class="d-flex flex-row-reverse">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div th:replace="/admin/share/Jquery"></div>
 <div th:attr="data-result-message=${result_message}"></div>
 <script th:inline="javascript">
-    // Hiển thị thông báo
-    var message = document.querySelector('[data-result-message]').getAttribute('data-result-message');
-    if (message) {
-        alert(message);
+
+    function tool(button) {
+        const detail = button.getAttribute("data-detail");
+        const data = JSON.stringify(detail);
+
+
+        var dataArray = data.split('),');
+        dataArray = dataArray.map(function(item) {
+            // Thêm dấu đóng ngoặc ')' cuối cùng cho mỗi đối tượng
+            if (!item.endsWith(')')) {
+                item += ')';
+            }
+            // Chuyển chuỗi thành đối tượng JSON
+            var obj = {};
+            item.replace(/(\w+)=(.*?)(?=(?:,|$))/g, function(match, key, value) {
+                obj[key] = value.trim();
+            });
+            return obj;
+        });
+
+
+        var jsonData = JSON.stringify(dataArray);
+        const products = JSON.parse(jsonData);
+
+        const tableBody = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = "";
+
+        for (const product of products) {
+            const row = tableBody.insertRow(-1);
+
+            const cellId = row.insertCell(0);
+            cellId.textContent = product.id;
+
+            const cellName = row.insertCell(1);
+            cellName.textContent = product.name;
+
+            const cellQuantity = row.insertCell(2);
+            cellQuantity.textContent = product.quantity;
+
+            const cellPrice = row.insertCell(3);
+            cellPrice.textContent = product.price;
+
+            const cellUnitPrice = row.insertCell(4);
+            let unitPrice = product.unitPrice.replaceAll(")","").replaceAll("\"" , "");
+            cellUnitPrice.textContent = unitPrice;
+        }
     }
 
-    //Nút xóa sản phẩm
+
     function deleteProduct(button){
         var productId = button.getAttribute("data-product-id");
         var userConfirmed = confirm("Bạn có muốn xóa sản phẩm này không ?");
@@ -107,38 +160,7 @@
         }
     }
 
-    //Mở modal
-    function openModal(element) {
-        var productData = element.getAttribute("data-product");
-        try {
-            var product = JSON.parse(productData);
-            console.log(product)
-            document.getElementById("id").value = product.id;
-            document.getElementById("name").value = product.name;
-            document.getElementById("price").value = chuyenDoiChuoi(product.price);
-            document.getElementById("quantity").value = product.quantity;
-            document.getElementById("sold").value = product.sold;
-            document.getElementById("material").value = product.material;
-            document.getElementById("note").value = product.note;
-            document.getElementById("point").value = product.rewardPoints;
 
-            $('#myModal').modal('show');
-
-        } catch (error) {
-            console.error("Lỗi khi parse JSON:", error);
-        }
-
-    }
-    function closeModal(){
-        $('#myModal').modal('hide');
-        window.location.href = 'http://localhost:8080//admin/product/list-product';
-    }
-
-    function chuyenDoiChuoi(chuoi) {
-        var buoc1 = chuoi.replace(/\./g, '');
-        var buoc2 = buoc1.replace('đ', '');
-        return buoc2;
-    }
 
 
 </script>

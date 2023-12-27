@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <style>
-    input{
-        border: none;
+    .form-control{
+        width: 60% !important;
     }
 </style>
 <head th:replace="/admin/share/head">
@@ -54,7 +54,7 @@
                             <td th:text="${listCustomer.customerStatus}"></td>
                             <td>
                                 <button class="btn btn-danger" th:attr="data-customer-id= ${listCustomer.id}" onclick="deleteCustomer(this)"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
-                                <button class="btn btn-success"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i></button>
+                                <button class="btn btn-success" th:attr="data-customer-email= ${listCustomer.email}" onclick="openModal(this)"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -69,14 +69,31 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header" style="border: none">
-                    <h4 class="modal-title text-center">Chỉnh sửa thông tin sản phẩm</h4>
+                    <h4 class="modal-title text-center">Gửi mail đến khách hàng</h4>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body" style="margin-left: 50px">
                     <div class="container">
-                        <form id="myForm" action="" method="" >
-
+                        <form id="myForm" action="/admin/customer/sendmail" method="post" >
+                            <div class="row">
+                                <div class="col" style="margin-bottom: 20px">
+                                    <label>Đến</label>
+                                    <input type="text" class="form-control" id="toEmail" name="toEmail" placeholder="abc@gmail.com">
+                                </div>
+                                <div class="col" style="margin-bottom: 20px">
+                                    <label>Tiêu đề</label>
+                                    <input type="text" class="form-control" id="name" name="subject">
+                                </div>
+                                <div class="col" style="margin-bottom: 20px">
+                                    <label>Nội dung gửi</label>
+                                    <textarea class="form-control" rows="5" id="note" name="body"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-success" onclick="submitForm()" >Gửi</button>
+                                <button class="btn btn-about" onclick="closeModal()" >Hủy</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -126,28 +143,23 @@
 
     //Mở modal
     function openModal(element) {
-        var productData = element.getAttribute("data-product");
-        try {
-            var product = JSON.parse(productData);
-            console.log(product)
-            document.getElementById("id").value = product.id;
-            document.getElementById("name").value = product.name;
-            document.getElementById("price").value = chuyenDoiChuoi(product.price);
-            document.getElementById("quantity").value = product.quantity;
-            document.getElementById("sold").value = product.sold;
-            document.getElementById("material").value = product.material;
-            document.getElementById("note").value = product.note;
-            document.getElementById("point").value = product.rewardPoints;
-
-            $('#myModal').modal('show');
-
-        } catch (error) {
-            console.error("Lỗi khi parse JSON:", error);
-        }
+        var email = element.getAttribute("data-customer-email");
+        document.getElementById("toEmail").value = email;
+        $('#myModal').modal('show');
 
     }
     function closeModal(){
         $('#myModal').modal('hide');
+    }
+
+    function submitForm() {
+
+        var form = document.getElementById("myForm");
+        form.submit();
+
+        setTimeout(function() {
+            alert("Gửi mail đến khách hàng thành công");
+        }, 3000);
     }
 
 
