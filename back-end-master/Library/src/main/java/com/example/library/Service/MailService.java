@@ -10,4 +10,5 @@ import java.util.List;
 public interface MailService {
     String sendMail(Customer customer , Order order , List<Product_Items> product_items);
     String send(SendMailDTO sendMailDTO);
+    String sendOrder(String subject ,Order order);
 }

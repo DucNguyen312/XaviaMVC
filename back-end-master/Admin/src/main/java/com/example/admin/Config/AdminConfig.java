@@ -69,7 +69,7 @@ public class AdminConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
-                .logoutSuccessUrl("/admin/login")
+                .logoutSuccessUrl("/user/login")
                 .permitAll()
                 .and()
             .exceptionHandling()

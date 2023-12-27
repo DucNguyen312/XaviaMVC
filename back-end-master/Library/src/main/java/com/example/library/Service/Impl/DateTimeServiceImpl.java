@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 @Service
@@ -33,5 +35,19 @@ public class DateTimeServiceImpl implements DateTimeService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public String CurrentDateTime(boolean tomorrow) {
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime nextDay = currentTime.plusDays(1);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String currentFormatted = currentTime.format(formatter);
+        String nextDayFormatted = nextDay.format(formatter);
+       if (tomorrow)
+           return nextDayFormatted;
+       else
+           return currentFormatted;
     }
 }

@@ -19,6 +19,8 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,53 +39,14 @@ class AdminApplicationTests {
 
 
     @Test
-    void S(){
-        List<Order> list = orderService.listOrder();
-        for (Order order : list){
-            List<OrderDetails> orderDetailsList = orderDetailRepository.findAllByOrder(order);
-            for (OrderDetails orderDetails : orderDetailsList)
-                System.out.println(orderDetails);
-        }
-    }
-
-    @Test
-    void Test1(){
-        List<Order> list = orderService.listOrder();
-        List<OrderDTO> orderDTOList = new ArrayList<>();
-        for (Order order : list){
-            List<OrderDetails> orderDetailsList = orderDetailRepository.findAllByOrder(order);
-            ArrayList<OrderDetail_Product> orderDetailProductArrayList = new ArrayList<>();
-            for (OrderDetails orderDetails : orderDetailsList){
-                OrderDetail_Product orderDetailProduct = new OrderDetail_Product();
-                orderDetailProduct.setId(orderDetails.getId());
-                orderDetailProduct.setName(orderDetails.getProducts().getName());
-                orderDetailProduct.setQuantity(orderDetails.getQuantity());
-                orderDetailProduct.setPrice(formatCurrency(orderDetails.getProducts().getPrice()));
-                orderDetailProduct.setUnitPrice(formatCurrency((int) orderDetails.getUnitPrice()));
-                orderDetailProductArrayList.add(orderDetailProduct);
-            }
-            OrderDTO orderDTO = new OrderDTO();
-            orderDTO.setId(order.getId());
-            orderDTO.setOrderDate(order.getOrderDate());
-            orderDTO.setTotalQuantity(order.getTotal_quantity());
-            orderDTO.setTotalPrice(formatCurrency((int) order.getTotal_price()));
-            orderDTO.setTotalPoint(order.getTotal_point());
-            orderDTO.setPaymentMethod(order.getPaymentMethod());
-            orderDTO.setPrePay(order.getPrePay());
-            orderDTO.setNote(order.getNote());
-            orderDTO.setName(order.getCustomer().getFullName());
-            orderDTO.setOrderDetailProducts(orderDetailProductArrayList);
-            orderDTOList.add(orderDTO);
-        }
-        for (OrderDTO orderDTO : orderDTOList)
-                System.out.println(orderDTO);
+    void Test(){
+        List<Order> orders = orderRepository.findByOrderStatus(OrderStatus.SUBMIT);
+        for (Order order : orders)
+            System.out.println(order.getTotal_price());
     }
 
 
-    public static String formatCurrency(int number) {
-        DecimalFormat decimalFormat = new DecimalFormat("#,###đ");
-        return decimalFormat.format(number);
-    }
+
 
 
 

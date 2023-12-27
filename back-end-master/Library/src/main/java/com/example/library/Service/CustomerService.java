@@ -9,6 +9,5 @@ public interface CustomerService {
     Customer addNewCustomer(CustomerDTO customerDTO , int point);
     List<Customer> listCustomer();
     String deleteCustomer(long id);
-
     void updateStatusCustomer();
 }

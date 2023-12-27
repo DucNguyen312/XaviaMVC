@@ -12,4 +12,7 @@ public interface OrderService {
     Order updateOrderCheck(long id);
     List<Order> listOrder();
     List<OrderDTO> orderView();
+    Order updateStatusSubmit(long id);
+    Order updateStatusCancel(long id);
+    String deleteOrder(long id);
 }

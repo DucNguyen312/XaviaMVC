@@ -106,4 +106,38 @@ public class OrderServiceImpl implements OrderService {
         DecimalFormat decimalFormat = new DecimalFormat("#,###đ");
         return decimalFormat.format(number);
     }
+
+    @Override
+    public Order updateStatusSubmit(long id) {
+        Optional<Order> order = orderRepository.findById(id);
+        if (order.isPresent()){
+            Order o = order.get();
+            o.setOrderStatus(OrderStatus.SUBMIT);
+            return orderRepository.save(o);
+        }
+        return null;
+    }
+
+    @Override
+    public Order updateStatusCancel(long id) {
+        Optional<Order> order = orderRepository.findById(id);
+        if (order.isPresent()){
+            Order o = order.get();
+            o.setOrderStatus(OrderStatus.CANCELLED);
+            return orderRepository.save(o);
+        }
+        return null;
+    }
+
+    @Override
+    public String deleteOrder(long id) {
+        Optional<Order> order = orderRepository.findById(id);
+        if (order.isPresent()){
+            Order order1 = order.get();
+            orderDetailRepository.deleteOrderDetailsByOrder(order1);
+            orderRepository.delete(order1);
+            return "Delete order success";
+        }
+        return "Delete order fail";
+    }
 }
