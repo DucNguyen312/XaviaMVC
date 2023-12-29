@@ -133,12 +133,12 @@
                 <thead>
                 <tr>
                     <td>ID</td>
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th class="text-center">Quantity</th>
-                    <th class="text-center">Price</th>
-                    <th class="text-center">Total</th>
-                    <th class="text-center"></th>
+                    <th>Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th >Số lượng</th>
+                    <th class="text-center">Giá</th>
+                    <th class="text-center">Thành tiền</th>
+                    <th class="text-center">Hoạt động</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -148,7 +148,7 @@
                         <img class="img-fluid" th:src="${item.img}">
                     </td>
                     <td style="width:35%" class="align-middle" th:text="${item.name}"></td>
-                    <td style="width:0%" class="align-middle text-center" >
+                    <td style="width:10%" class="align-middle text-center" >
                         <input th:value="${item.sold}" type="number" min="1" th:max="${item.quantity - item.sold + 1}" class="form-control form-control-sm quantity" oninput="updateTotal(this)" style="background-color: #1B1B1B; color: white;">
                     </td>
                     <td style="width:20%" class="align-middle text-center price" th:text="${item.price}"></td>
@@ -162,9 +162,9 @@
             <div class="back-to-shop"><a href="/"><i class="fa-solid fa-left-long"></i><span style="color: white">Back to shop</span></a></div>
             <div class="container">
                 <div class="row" style="color: white">
-                    <div class="col-11 text-end">Quantity:</div>
+                    <div class="col-11 text-end">Tổng số lượng:</div>
                     <div class="col-1 text-start" id = "total-quantity"></div>
-                    <div class="col-11 text-end">Total:</div>
+                    <div class="col-11 text-end">Tổng tiền:</div>
                     <div class="col-1 text-start" id = "totals"></div>
                 </div>
             </div>
@@ -224,16 +224,6 @@
                             <a href="/page/product_main/tamsinh/tamsinh.html"><li>> Tam Sinh </li></a>
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div class="container-fluid container-fulid-payment">
-                <div class="payment" style="display: flex; justify-content: center;">
-                <div class="icon-payment"><img src="/image/payment/geotrust.png" alt=""></div>
-                <div class="icon-payment"><img src="/image/payment/Visa.png" alt=""></div>
-                <div class="icon-payment"><img src="/image/payment/mastercard.png" alt=""></div>
-                <div class="icon-payment"><img src="/image/payment/momo.png" alt=""></div>
-                <div class="icon-payment"><img src="/image/payment/jcb.png" alt=""></div>
-                <div class="icon-payment"><img src="/image/payment/diners.png" alt=""></div>
                 </div>
             </div>
         </div>

@@ -28,9 +28,9 @@ public class DashboardServiceImpl implements DashboardService {
         List<Order> orders_cancel = orderRepository.findByOrderStatus(OrderStatus.CANCELLED);
         List<Customer> customerList = customerRepository.findAll();
 
-        double total_today = orderRepository.findRevenueByCurrentDate();
-        double total_month = orderRepository.findRevenueByCurrentMonth();
-        double total_year = orderRepository.findRevenueByCurrentYear();
+        double total_today = (orderRepository.findRevenueByCurrentDate() != null) ? orderRepository.findRevenueByCurrentDate() : 0;
+        double total_month = (orderRepository.findRevenueByCurrentMonth()!= null) ? orderRepository.findRevenueByCurrentMonth() : 0;
+        double total_year = (orderRepository.findRevenueByCurrentYear()!= null) ? orderRepository.findRevenueByCurrentYear() : 0;
 
         int product_sold = 0;
         for (Order order : orders_submit)

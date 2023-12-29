@@ -23,15 +23,15 @@ public interface OrderRepository extends JpaRepository<Order , Long> {
     List<Order> findByOrderStatus(OrderStatus orderStatus);
 
     // Lấy ra doanh thu của ngày hiện tại
-    @Query("SELECT SUM(o.total_price) FROM Order o WHERE DATE(o.orderDate) = CURRENT_DATE")
+    @Query("SELECT SUM(o.total_price) FROM Order o WHERE DATE(o.orderDate) = CURRENT_DATE AND o.orderStatus = 'SUBMIT'")
     Double findRevenueByCurrentDate();
 
     // Lấy ra doanh thu của tháng hiện tại
-    @Query("SELECT SUM(o.total_price) FROM Order o WHERE MONTH(o.orderDate) = MONTH(CURRENT_DATE) AND YEAR(o.orderDate) = YEAR(CURRENT_DATE)")
+    @Query("SELECT SUM(o.total_price) FROM Order o WHERE MONTH(o.orderDate) = MONTH(CURRENT_DATE) AND YEAR(o.orderDate) = YEAR(CURRENT_DATE) AND o.orderStatus = 'SUBMIT'")
     Double findRevenueByCurrentMonth();
 
     // Lấy ra doanh thu của năm hiện tại
-    @Query("SELECT SUM(o.total_price) FROM Order o WHERE YEAR(o.orderDate) = YEAR(CURRENT_DATE)")
+    @Query("SELECT SUM(o.total_price) FROM Order o WHERE YEAR(o.orderDate) = YEAR(CURRENT_DATE) AND o.orderStatus = 'SUBMIT'")
     Double findRevenueByCurrentYear();
 
 }

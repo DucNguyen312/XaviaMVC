@@ -50,8 +50,8 @@
             <div class="row">
                 <div class="col-3">
                     <div class="search">
-                        <input type="text" class="form-control" placeholder="Tìm Kiếm">
-                        <i class="ion-ios-search-strong"></i>
+                        <input id="data-search" type="text" class="form-control" placeholder="Tìm Kiếm">
+                        <button type="submit" onclick="getsearch(this)"><i class="ion-ios-search-strong"></i></button>
                     </div>
                 </div>
                 <div class="col-5">
@@ -738,6 +738,14 @@
     <script th:src="@{/main.js}"></script>
 
     <script>
+        function getsearch(button){
+            const data = document.getElementById("data-search").value;
+            window.location.href = '/page/product/products/'+ data;
+            console.log(data)
+        }
+
+
+
         //backtop
         mybacktop = document.getElementById("backtop");
 
@@ -757,7 +765,6 @@
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         }
-
     </script>
 </div>
 

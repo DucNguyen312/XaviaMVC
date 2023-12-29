@@ -28,6 +28,10 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Users users;
+
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 

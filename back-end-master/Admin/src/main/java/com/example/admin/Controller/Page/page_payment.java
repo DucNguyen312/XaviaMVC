@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Controller
@@ -72,7 +73,7 @@ public class page_payment {
         model.addAttribute("imageUrl", imageUrl);
 
         //Thanh toán
-        String AMOUNT = total_price+"";
+        String AMOUNT = formatCurrency(total_price)+"";
         String DESCRIPTION = "ID " + order.getId();
         model.addAttribute("AMOUNT", AMOUNT);
         model.addAttribute("DESCRIPTION", DESCRIPTION);
@@ -101,6 +102,11 @@ public class page_payment {
         String notification = "Bạn vui lòng kiểm tra email để theo dõi đơn hàng";
         model.addAttribute("result_message", notification);
         return "index";
+    }
+
+    public static String formatCurrency(double number) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###đ");
+        return decimalFormat.format(number);
     }
 
 }

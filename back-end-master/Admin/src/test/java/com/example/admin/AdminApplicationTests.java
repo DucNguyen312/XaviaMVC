@@ -1,5 +1,6 @@
 package com.example.admin;
 
+import com.example.library.DTO.Dashboard.DashboardDTO;
 import com.example.library.DTO.OrderDTO.OrderDTO;
 import com.example.library.DTO.OrderDTO.OrderDetail_Product;
 import com.example.library.DTO.OrderDTO.OrderStatus;
@@ -36,13 +37,16 @@ class AdminApplicationTests {
     private OrderRepository orderRepository;
     @Autowired
     private OrderService orderService;
-
+    @Autowired
+    private DashboardService dashboardService;
 
     @Test
     void Test(){
-        List<Order> orders = orderRepository.findByOrderStatus(OrderStatus.SUBMIT);
-        for (Order order : orders)
-            System.out.println(order.getTotal_price());
+        double total_today = (orderRepository.findRevenueByCurrentDate() != null) ? orderRepository.findRevenueByCurrentDate() : 0;
+        double total_month = (orderRepository.findRevenueByCurrentMonth()!= null) ? orderRepository.findRevenueByCurrentMonth() : 0;
+        double total_year = (orderRepository.findRevenueByCurrentYear()!= null) ? orderRepository.findRevenueByCurrentYear() : 0;
+
+        System.out.println(total_today + " " + total_month + " " + total_year);
     }
 
 

@@ -19,8 +19,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
-
-
+    //Lấy Product dựa trên ID
     @Override
     public Products getProductByID(Long id) {
         Optional<Products> products = productRepository.findById(id);
@@ -116,5 +115,57 @@ public class ProductServiceImpl implements ProductService {
         return decimalFormat.format(number);
     }
 
+    @Override
+    public List<ProductView> listProductgetName(String name) {
+        List<Products> productsList = productRepository.listProductsByName(name);
+        List<ProductView> productViewList = new ArrayList<>();
+        for(Products p : productsList){
+            ProductView productView = new ProductView();
+            productView.setId(p.getId());
+            productView.setName(p.getName());
+            String price = formatCurrency(p.getPrice());
+            productView.setPrice(price);
+            productView.setQuantity(p.getQuantity());
+            productView.setSold(p.getSold());
+            productView.setMaterial(p.getMaterial());
+            productView.setNote(p.getNote());
+            productView.setRewardPoints(p.getRewardPoints());
+            productView.setImg(p.getImg());
+            productViewList.add(productView);
+        }
+        return productViewList;
+    }
 
+    @Override
+    public List<ProductView> listProducts() {
+        List<Products> productsList = productRepository.findAll();
+        List<ProductView> productViewList = new ArrayList<>();
+        for(Products p : productsList){
+            ProductView productView = new ProductView();
+            productView.setId(p.getId());
+            productView.setName(p.getName());
+            String price = formatCurrency(p.getPrice());
+            productView.setPrice(price);
+            productView.setQuantity(p.getQuantity());
+            productView.setSold(p.getSold());
+            productView.setMaterial(p.getMaterial());
+            productView.setNote(p.getNote());
+            productView.setRewardPoints(p.getRewardPoints());
+            productView.setImg(p.getImg());
+            productViewList.add(productView);
+        }
+        return productViewList;
+    }
+
+    @Override
+    public Products updateProductSold(long id, int sold) {
+        Optional<Products> optionalProducts = productRepository.findById(id);
+        if (optionalProducts.isPresent()){
+            Products products = optionalProducts.get();
+            products.setSold(products.getSold() + sold);
+            products.setQuantity(products.getQuantity() - sold);
+            return productRepository.save(products);
+        }
+        return null;
+    }
 }

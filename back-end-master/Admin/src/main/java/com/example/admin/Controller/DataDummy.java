@@ -81,7 +81,7 @@ public class DataDummy implements CommandLineRunner {
             p1.setMaterial("Ngọc Trai");
             p1.setNote("");
             p1.setRewardPoints(100);
-            p1.setImg("/image/tamsinh/product-1.jpg");
+            p1.setImg("/image/spchinh/anh1.png");
             productRepository.save(p1);
         }
         if(!productRepository.existsByName("Hoa Của Đại Dương"))
@@ -93,119 +93,61 @@ public class DataDummy implements CommandLineRunner {
             p1.setQuantity(20);
             p1.setSold(0);
             p1.setMaterial("Ngọc Trai");
-            p1.setNote("");
+            p1.setNote("Hạt ngọc trai màu xanh dương, hạt thủy tinh trong suốt như nước biển, hạt pha lê màu xanh dương sâu");
             p1.setRewardPoints(100);
-            p1.setImg("/image/tamsinh/product-2.jpg");
+            p1.setImg("/image/spchinh/anh2.png");
             productRepository.save(p1);
         }
-        if(!productRepository.existsByName("Hoa Của Đại Dương"))
+        if(!productRepository.existsByName("Tâm hồn của thiếu nữ"))
         {
             Products p1 = new Products();
             p1.setId(3);
-            p1.setName("Hoa Của Đại Dương");
-            p1.setPrice(1990000);
-            p1.setQuantity(20);
-            p1.setSold(0);
-            p1.setMaterial("Ngọc Trai");
-            p1.setNote("");
-            p1.setRewardPoints(100);
-            p1.setImg("/image/tamsinh/product-3.jpg");
-            productRepository.save(p1);
-        }
-        if(!productRepository.existsByName("Tâm hồn của thiếu nữ"))
-        {
-            Products p1 = new Products();
-            p1.setId(4);
             p1.setName("Tâm hồn của thiếu nữ");
             p1.setPrice(18900000);
             p1.setQuantity(20);
             p1.setSold(0);
-            p1.setNote("");
+            p1.setNote("Hạt ngọc trai trắng tinh khôi, hạt pha lê trong suốt, hạt đá màu pastel");
             p1.setRewardPoints(100);
-            productRepository.save(p1);
-        }
-        if(!productRepository.existsByName("Tâm hồn của thiếu nữ"))
-        {
-            Products p1 = new Products();
-            p1.setId(5);
-            p1.setName("Tâm hồn của thiếu nữ");
-            p1.setPrice(18900000);
-            p1.setQuantity(20);
-            p1.setSold(0);
-            p1.setNote("");
-            p1.setRewardPoints(100);
+            p1.setImg("/image/spchinh/anh6.png");
             productRepository.save(p1);
         }
         if(!productRepository.existsByName("Ý Nghĩa"))
         {
             Products p1 = new Products();
-            p1.setId(6);
+            p1.setId(5);
             p1.setName("Ý Nghĩa");
             p1.setPrice(15000000);
             p1.setQuantity(20);
             p1.setSold(0);
-            p1.setNote("");
+            p1.setNote("ngọc trai màu trắng, hạt pha lê màu đỏ rực, và hạt đá màu vàng");
             p1.setRewardPoints(100);
+            p1.setImg("/image/spchinh/da1.png");
             productRepository.save(p1);
         }
         if(!productRepository.existsByName("Vận Mệnh"))
         {
             Products p1 = new Products();
-            p1.setId(7);
+            p1.setId(6);
             p1.setName("Vận Mệnh");
             p1.setPrice(19800000);
             p1.setQuantity(20);
             p1.setSold(0);
-            p1.setNote("");
+            p1.setNote("hạt ngọc trai, hạt đá màu xanh dương, và hạt thủy tinh màu vàng");
             p1.setRewardPoints(100);
+            p1.setImg("/image/spchinh/da3.png");
             productRepository.save(p1);
         }
         if(!productRepository.existsByName("Đá quý"))
         {
             Products p1 = new Products();
-            p1.setId(8);
+            p1.setId(7);
             p1.setName("Đá quý");
             p1.setPrice(18900000);
             p1.setQuantity(20);
             p1.setSold(0);
-            p1.setNote("");
+            p1.setNote("Hạt ngọc trai tự nhiên, hạt đá quý tự nhiên như ruby, sapphire, hay emerald, hạt pha lê.");
             p1.setRewardPoints(100);
-            productRepository.save(p1);
-        }
-        if(!productRepository.existsByName("Mèo may mắn"))
-        {
-            Products p1 = new Products();
-            p1.setId(9);
-            p1.setName("Mèo may mắn");
-            p1.setPrice(490000);
-            p1.setQuantity(20);
-            p1.setSold(0);
-            p1.setNote("");
-            p1.setRewardPoints(100);
-            productRepository.save(p1);
-        }
-        if(!productRepository.existsByName("Mèo may mắn"))
-        {
-            Products p1 = new Products();
-            p1.setId(10);
-            p1.setName("Mèo may mắn");
-            p1.setPrice(690000);
-            p1.setQuantity(20);
-            p1.setSold(0);
-            p1.setNote("");
-            p1.setRewardPoints(100);
-            productRepository.save(p1);
-        }
-        if(!productRepository.existsByName("Cánh thiên thần"))
-        {
-            Products p1 = new Products();
-            p1.setId(11);
-            p1.setName("Cánh thiên thần");
-            p1.setPrice(490000);
-            p1.setQuantity(20);
-            p1.setSold(0);
-            p1.setNote("");
-            p1.setRewardPoints(100);
+            p1.setImg("/image/spchinh/da4.png");
             productRepository.save(p1);
         }
 

@@ -1,11 +1,17 @@
 package com.example.admin.Controller.AdminController;
 
 import com.example.library.DTO.OrderDTO.OrderDTO;
+import com.example.library.DTO.OrderDTO.OrderStatus;
 import com.example.library.Model.Order;
+import com.example.library.Model.OrderDetails;
 import com.example.library.Model.Users;
+import com.example.library.Repository.OrderDetailRepository;
+import com.example.library.Repository.OrderRepository;
 import com.example.library.Service.MailService;
 import com.example.library.Service.OrderService;
+import com.example.library.Service.ProductService;
 import com.example.library.Service.UserService;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +31,13 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @GetMapping("")
     public String viewOrder(Model model){
@@ -41,6 +54,13 @@ public class OrderController {
     @PostMapping("/submitOrder/{id}")
     public String submitOrder(@PathVariable(name = "id") long id){
         Order order = orderService.updateStatusSubmit(id);
+        List<Order> orderList = orderRepository.findByOrderStatus(OrderStatus.SUBMIT);
+        for (Order orders : orderList){
+            List<OrderDetails> orderDetailsList = orderDetailRepository.findAllByOrder(orders);
+            for (OrderDetails orderDetails : orderDetailsList){
+                productService.updateProductSold(orderDetails.getProducts().getId() , orderDetails.getProducts().getSold());
+            }
+        }
         mailService.sendOrder("Xác nhận Đơn Hàng của Quý Khách tại Xavia " ,order);
         return "redirect:/admin/orders";
     }

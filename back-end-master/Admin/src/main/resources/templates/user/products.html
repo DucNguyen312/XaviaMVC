@@ -55,9 +55,9 @@
           <div class="container-fluid bg-black" style="border-bottom: 1px solid rgb(106, 106, 106);">
               <div class="row">
                   <div class="col-3">
-                      <div class="search"> 
-                          <input type="text" class="form-control" placeholder="Tìm Kiếm"> 
-                          <i class="ion-ios-search-strong"></i> 
+                      <div class="search">
+                          <input id="data-search" type="text" class="form-control" placeholder="Tìm Kiếm">
+                          <button type="submit" onclick="getsearch(this)"><i class="ion-ios-search-strong"></i></button>
                       </div>
                   </div>
                   <div class="col-5">
@@ -862,6 +862,11 @@
 
       function closeModal(){
           $('#myModal').modal('hide');
+      }
+      function getsearch(button){
+          const data = document.getElementById("data-search").value;
+          window.location.href = '/page/product/products/'+ data;
+          console.log(data)
       }
 
   </script>

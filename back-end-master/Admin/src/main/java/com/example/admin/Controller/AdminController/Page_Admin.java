@@ -2,6 +2,7 @@ package com.example.admin.Controller.AdminController;
 
 import com.example.admin.Config.CustomUserConfigService;
 import com.example.library.DTO.Dashboard.DashboardDTO;
+import com.example.library.DTO.UserDTO.UserDTO;
 import com.example.library.Model.Users;
 import com.example.library.Repository.CustomerRepository;
 import com.example.library.Repository.OrderRepository;
@@ -14,6 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Page_Admin {
@@ -41,5 +45,24 @@ public class Page_Admin {
         return "user/login";
     }
 
+    @GetMapping("/user/register")
+    public String viewRegister(){
+        return "/user/register";
+    }
+
+    @PostMapping("/user/register")
+    public ModelAndView register(@ModelAttribute UserDTO userDTO , Model model){
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user/register");
+        modelAndView.addObject("user" , userDTO);
+
+
+        if(userService.Register(userDTO) == "Email already exist")
+            model.addAttribute("result_message" , "Email already exist");
+        else
+            model.addAttribute("result_message" , "Register successfully");
+        return modelAndView;
+    }
 
 }

@@ -2,18 +2,25 @@ package com.example.library.Service.Impl;
 
 import com.example.library.DTO.UserDTO.LoginDTO;
 import com.example.library.DTO.UserDTO.UserDTO;
+import com.example.library.Model.Role;
 import com.example.library.Model.Users;
+import com.example.library.Repository.RoleRepository;
 import com.example.library.Repository.UserRepository;
 import com.example.library.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -28,6 +35,20 @@ public class UserServiceImpl implements UserService {
         user_new.setEmail(userDTO.getEmail());
         user_new.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         userRepository.save(user_new);
+
+        Users user = userRepository.findByEmail(user_new.getEmail());
+        Role role = roleRepository.findByName("ADMIN");
+        if (user != null && role != null) {
+            Collection<Role> roles = user.getRoles();
+            if (roles == null) {
+                roles = new HashSet<>();
+            }
+            if (!roles.contains(role)) {
+                roles.add(role);
+                user.setRoles(roles);
+                userRepository.save(user);
+            }
+        }
         return "Register successfully";
     }
 

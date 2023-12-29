@@ -46,7 +46,7 @@ public class ProductController {
         String email = authentication.getName();
         Users user = userService.findEmail(email);
 
-        List<ProductView> listProduct = productService.getListProductView();
+        List<ProductView> listProduct = productService.listProducts();
         model.addAttribute("listProduct" ,listProduct);
         model.addAttribute("username", user.getFullName());
         return "/admin/Product/ListProduct";

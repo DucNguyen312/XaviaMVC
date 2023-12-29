@@ -7,15 +7,15 @@
 
       <li>
         <a href="/admin">
-          <i class="fa fa-th"></i> <span>Thống kê</span>
+          <i class="fa fa-dashboard"></i> <span>Thống kê</span>
           <span class="pull-right-container">
-              <small class="label pull-right bg-green">FE</small>
+              <small class="label pull-right bg-green">Hot</small>
             </span>
         </a>
       </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-dashboard"></i> <span>Quản lý sản phẩm</span>
+          <i class="ion ion-bag"></i> <span>Quản lý sản phẩm</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -25,19 +25,22 @@
           <li><a th:href="@{/admin/product/list-product}"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
         </ul>
       </li>
-      <li>
-        <a href="/admin/orders/">
-          <i class="fa fa-th"></i> <span>Danh sách hóa đơn</span>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa-brands fa-opencart"></i> <span>Quản lý hóa đơn</span>
           <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
+        <ul class="treeview-menu">
+          <li><a th:href="@{/admin/orders/}"><i class="fa fa-circle-o"></i>Danh sách hóa đơn</a></li>
+        </ul>
       </li>
       <li>
         <a href="/admin/customer/">
-          <i class="fa fa-th"></i> <span>Danh sách khách hàng</span>
+          <i class="fa fa-user"></i> <span>Danh sách khách hàng</span>
           <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
+              <small class="label pull-right bg-green"></small>
             </span>
         </a>
       </li>
